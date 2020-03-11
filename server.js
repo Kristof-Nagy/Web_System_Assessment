@@ -31,6 +31,11 @@ app.use('/admin', adminRouter);
   // continue doing what we were doing and go to the route
   next(); });
 
+
+// route with parameters (http://localhost:PORT/admin/users/:name)
+adminRouter.get('/users/:name', function(req, res) {
+ res.send('hello ' + req.params.name + '!'); });
+
 // start the server
 app.listen(PORT);
 console.log('Express Server running at http://127.0.0.1:'.PORT);
