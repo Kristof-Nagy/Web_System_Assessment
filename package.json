@@ -1,0 +1,18 @@
+{
+  "name": "websystem",
+  "version": "1.0.0",
+  "description": "Json package for server",
+  "main": "server.js",
+  "scripts":
+  {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Kristof Nagy",
+  "license": "ISC",
+  "dependencies":
+  {
+    "express": "~4.13.4"
+  }
+}
+
