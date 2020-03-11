@@ -3,16 +3,21 @@
   "version": "1.0.0",
   "description": "Json package for server",
   "main": "server.js",
-  "scripts":
-  {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "author": "Kristof Nagy",
   "license": "ISC",
-  "dependencies":
-  {
+  "dependencies": {
     "express": "~4.13.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tofuist/Web_System_Assessment.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tofuist/Web_System_Assessment/issues"
+  },
+  "homepage": "https://github.com/Tofuist/Web_System_Assessment#readme"
 }
-
