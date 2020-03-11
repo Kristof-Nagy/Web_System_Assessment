@@ -36,6 +36,17 @@ app.use('/admin', adminRouter);
 adminRouter.get('/users/:name', function(req, res) {
  res.send('hello ' + req.params.name + '!'); });
 
+// route middleware to validate :name
+adminRouter.param('name', function(req, res, next, name) {
+ // do validation on name here
+ // log something so we know its working
+ console.log('doing name validations on ' + name);
+ // once validation is done save the new item in the req
+ req.name = name;
+ // go to the next thing
+ next();
+ })
+
 // start the server
 app.listen(PORT);
 console.log('Express Server running at http://127.0.0.1:'.PORT);
