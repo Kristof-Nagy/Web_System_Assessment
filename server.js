@@ -8,7 +8,8 @@ var port    = PORT;
 app.get('/', function(req, res) {
         res.sendFile(__dirname + '/index.html');
       });
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static("public"));
 
 // create routes for the admin section
 //get an instance of the router
