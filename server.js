@@ -68,12 +68,12 @@ res.sendFile(__dirname + "/register.html");
 }
 .post(function(req,res)){
 res.send("processing the register form!");
-}
+});
 
 app.route("/about_us")
 .get(function(){
 res.sendFile(__dirname + "/about_us.html")
-}
+});
 
 // start the server
 app.listen(PORT);
