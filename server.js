@@ -60,6 +60,7 @@ app.route('/login')
  res.send('processing the login form!');
  });
 
+app.use(express.static(path.jin(__dirname, "public")));
 
 // start the server
 app.listen(PORT);
