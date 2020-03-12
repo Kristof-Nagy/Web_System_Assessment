@@ -66,12 +66,12 @@ app.route("/register")
 .get(function(req, res){
 res.sendFile(__dirname + "/register.html");
 }
-.post(function(req,res)){
+.post(function(req, res)){
 res.send("processing the register form!");
 });
 
 app.route("/about_us")
-.get(function(){
+.get(function(req, res){
 res.sendFile(__dirname + "/about_us.html")
 });
 
