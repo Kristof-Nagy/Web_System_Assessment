@@ -52,7 +52,7 @@ adminRouter.get('/users/:name', function(req, res) {
 app.route('/login')
  // show the form (GET http://localhost:PORT/login)
  .get(function(req, res) {
- res.send('this is the login form');
+ res.send(path.join(__dirname + "login.html"));
  })
  // process the form (POST http://localhost:PORT/login)
  .post(function(req, res) { console.log('processing');
