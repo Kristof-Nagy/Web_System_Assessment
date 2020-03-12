@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 8080;
 var port    = PORT;
 // send our index.html file to the user for the home page
 app.get('/', function(req, res) {
-        res.sendFile(__dirname + '/login.html');
+        res.sendFile(__dirname + '/index.html');
       });
 
 // create routes for the admin section
