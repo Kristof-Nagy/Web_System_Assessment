@@ -52,10 +52,11 @@ adminRouter.get('/users/:name', function(req, res) {
 app.route('/login')
  // show the form (GET http://localhost:PORT/login)
  .get(function(req, res) {
- res.send("valami"));
+ res.send("valami");
  })
  // process the form (POST http://localhost:PORT/login)
- .post(function(req, res) { console.log('processing');
+ .post(function(req, res) { 
+ console.log('processing');
  res.send('processing the login form!');
  });
 
