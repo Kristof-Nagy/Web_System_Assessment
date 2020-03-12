@@ -57,11 +57,23 @@ app.route('/login')
  res.sendFile(__dirname + "/login.html");
  })
  // process the form (POST http://localhost:PORT/login)
- .post(function(req, res) { 
+ .post(function(req, res) {
  console.log('processing');
  res.send('processing the login form!');
  });
 
+app.route("/register")
+.get(function(req, res){
+res.sendFile(__dirname + "/register.html");
+}
+.post(function(req,res)){
+res.send("processing the register form!");
+}
+
+app.route("/about_us")
+.get(function(){
+res.sendFile(__dirname + "/about_us.html")
+}
 
 // start the server
 app.listen(PORT);
