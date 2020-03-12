@@ -63,17 +63,17 @@ app.route('/login')
  });
 
 app.route("/register")
-.get(function(req, res){
-res.sendFile(__dirname + "/register.html");
-})
-.post(function(req, res)){
-res.send("processing the register form!");
-});
+ .get(function(req, res) {
+ res.sendFile(__dirname + "/register.html");
+ })
+ .post(function(req, res) {
+ res.send("processing the register form!");
+ });
 
 app.route("/about_us")
-.get(function(req, res){
-res.sendFile(__dirname + "/about_us.html")
-});
+ .get(function(req, res) {
+ res.sendFile(__dirname + "/about_us.html")
+ });
 
 // start the server
 app.listen(PORT);
