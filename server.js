@@ -8,6 +8,7 @@ var port    = PORT;
 app.get('/', function(req, res) {
         res.sendFile(__dirname + '/index.html');
       });
+app.use(express.static(path.join(__dirname, 'public')));
 
 // create routes for the admin section
 //get an instance of the router
@@ -60,7 +61,6 @@ app.route('/login')
  res.send('processing the login form!');
  });
 
-app.use(express.static(path.jin(__dirname, "public")));
 
 // start the server
 app.listen(PORT);
