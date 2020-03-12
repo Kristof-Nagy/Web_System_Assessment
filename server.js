@@ -65,7 +65,7 @@ app.route('/login')
 app.route("/register")
 .get(function(req, res){
 res.sendFile(__dirname + "/register.html");
-}
+})
 .post(function(req, res)){
 res.send("processing the register form!");
 });
