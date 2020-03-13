@@ -16,7 +16,6 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 MongoClient.connect(uri, function (err,db){
- if(err) throw err;
  console.log("Start the database stuff");
  var dbo = db.db("mydb");
  var obj = { firstInput:"user1", secondInput:"user1again" };
