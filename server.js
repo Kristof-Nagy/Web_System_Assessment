@@ -17,11 +17,11 @@ app.route('/login')
  res.sendFile(__dirname + "/login.html");
  })
  // process the form (POST http://localhost:PORT/login)
- .post(function(req, res) {
+ .post(function(req, res, next) {
  var output = "processing"
  var input1 = req.query.input1;
  var input2 = req.query.input2;
- console.warn("The params:" + input1 + " " + input2);
+ console.log("The params:" + input1 + " " + input2);
  res.send('processing the login form!');
  });
 
