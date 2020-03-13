@@ -17,6 +17,14 @@ const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?ret
 const client = new MongoClient(uri, { useNewUrlParser: true });
 MongoClient.connect(uri, function (err,db){
  if(err) throw err;
+ console.log("Start the database stuff");
+ var dbo = db.db("mydb");
+ var obj = { firstInput:"user1", secondInput:"user1again" };
+ dbo.collection("users").insertOne(obj, function(err, res){
+  if (err) throw err;
+  console.log("1 user inserted");
+  db.close();
+ });
  console.log("End the database stuff");
 });
 
