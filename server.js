@@ -26,7 +26,7 @@ app.route('/login')
  .post(urlencodedParser,function(req, res) {
 
  console.log(req.body);
- res.send(nick_name + " " + pswd);
+ res.send(req.body.nick_name + " " + req.body.pswd);
  });
 
 app.route("/register")
