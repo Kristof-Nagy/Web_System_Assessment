@@ -15,10 +15,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
+MongoClient.connect(uri, function (err,db){
+ if(err) throw err;
+ console.log("End the database stuff");
 });
 
 // END OF DATABASE
