@@ -12,7 +12,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // DATABASE
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Tofu:<password>@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Tofu:Code4Life%21@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
