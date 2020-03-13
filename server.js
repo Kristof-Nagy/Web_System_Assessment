@@ -28,6 +28,7 @@ app.route('/login')
  var input2 = req.query.input2;
 
  console.log("The params:" + input1 + " " + input2);
+ console.log(req.body);
  res.send('processing the login form!');
  });
 
