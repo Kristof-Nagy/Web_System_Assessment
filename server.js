@@ -24,12 +24,9 @@ app.route('/login')
  })
  // process the form (POST http://localhost:PORT/login)
  .post(urlencodedParser,function(req, res) {
- var input1 = req.query.input1;
- var input2 = req.query.input2;
 
- console.log("The params:" + input1 + " " + input2);
  console.log(req.body);
- res.send('processing the login form!');
+ res.send(nick_name + " " + pswd);
  });
 
 app.route("/register")
