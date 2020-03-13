@@ -9,6 +9,18 @@ var bodyParser = require('body-parser');
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+// DATABASE
+const MongoClient = require("mongodb").MongoClient;
+const uri = "mongodb+srv://Tofu:<password>@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true});
+
+MongoClient.connect(uri, function(err, db){
+ if(err) throw err;
+ console.log("End the db stuff");
+));
+
+// END OF DATABASE
+
 
 // send our index.html file to the user for the home page
 app.get('/', function(req, res) {
