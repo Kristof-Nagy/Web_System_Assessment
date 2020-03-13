@@ -17,7 +17,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true});
 MongoClient.connect(uri, function(err, db){
  if(err) throw err;
  console.log("End the db stuff");
-));
+});
 
 // END OF DATABASE
 
