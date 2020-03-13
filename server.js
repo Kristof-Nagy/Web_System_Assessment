@@ -4,6 +4,12 @@ var app     = express();
 const PORT = process.env.PORT || 8080;
 // set the port based on environment (more on environments later)
 var port    = PORT;
+var bodyParser = require('body-parser');
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+
 // send our index.html file to the user for the home page
 app.get('/', function(req, res) {
         res.sendFile(__dirname + '/index.html');
@@ -17,7 +23,7 @@ app.route('/login')
  res.sendFile(__dirname + "/login.html");
  })
  // process the form (POST http://localhost:PORT/login)
- .post(function(req, res) {
+ .post(urlencodedParser,function(req, res) {
  var input1 = req.query.input1;
  var input2 = req.query.input2;
 
@@ -41,4 +47,4 @@ app.route("/about_us")
 // start the server
 app.listen(PORT, function(){
  console.log('Express Server running at http://127.0.0.1:'.PORT);
-})
+});
