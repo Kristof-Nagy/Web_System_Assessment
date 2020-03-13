@@ -18,14 +18,8 @@ app.route('/login')
  })
  // process the form (POST http://localhost:PORT/login)
  .post(function(req, res) {
- var output = "processing"
  var input1 = req.query.input1;
  var input2 = req.query.input2;
-
- if(input1 != null)
-{
-	res.sendFile(__dirname + "/index.html");
-}
 
  console.log("The params:" + input1 + " " + input2);
  res.send('processing the login form!');
@@ -45,5 +39,6 @@ app.route("/about_us")
  });
 
 // start the server
-app.listen(PORT);
-console.log('Express Server running at http://127.0.0.1:'.PORT);
+app.listen(PORT, function(){
+ console.log('Express Server running at http://127.0.0.1:'.PORT);
+})
