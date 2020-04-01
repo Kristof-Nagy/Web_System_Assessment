@@ -37,7 +37,7 @@ MongoClient.connect(uri, function (err,db){
 
 
 // send our index.html file to the user for the home page
-app.get('/index', function(req, res) {
+app.get('/', function(req, res) {
         res.sendFile(__dirname + '/index.html');
       });
 
