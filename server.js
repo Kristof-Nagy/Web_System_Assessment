@@ -11,10 +11,10 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // DATABASE
 
-
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
+
 MongoClient.connect(uri, function (err,db){
  console.log("Start the database stuff");
  var dbo = db.db("Scores");
@@ -22,7 +22,7 @@ MongoClient.connect(uri, function (err,db){
  dbo.collection("GameScore").insertOne(obj, function(err, res){
   if (err) throw err;
   console.log("1 user inserted");
-  db.close
+  db.close();
  });
 
  var dbo2 = db.db("Users");
