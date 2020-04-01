@@ -17,11 +17,17 @@ const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?ret
 const client = new MongoClient(uri, { useNewUrlParser: true });
 MongoClient.connect(uri, function (err,db){
  console.log("Start the database stuff");
- var dbo = db.db("mydb");
- var obj = { firstInput:"user1", secondInput:"user1again" };
- dbo.collection("users").insertOne(obj, function(err, res){
+ var dbo = db.db("Scores");
+ var obj = { username:"user 1", score:"0" };
+ dbo.collection("GameScore").insertOne(obj, function(err, res){
   if (err) throw err;
   console.log("1 user inserted");
+ });
+
+ var dbo2 = db.db("Users");
+ var obj2 = { username:"habanta", password:"paladin07" };
+ dbo2.collection("UsersDetail").insertOne(obj2, function(err, res){
+  if (err) throw err;
   db.close();
  });
  console.log("End the database stuff");
@@ -31,7 +37,7 @@ MongoClient.connect(uri, function (err,db){
 
 
 // send our index.html file to the user for the home page
-app.get('/', function(req, res) {
+app.get('/index', function(req, res) {
         res.sendFile(__dirname + '/index.html');
       });
 
