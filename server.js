@@ -22,6 +22,7 @@ MongoClient.connect(uri, function (err,db){
  dbo.collection("GameScore").insertOne(obj, function(err, res){
   if (err) throw err;
   console.log("1 user inserted");
+  db.close
  });
 
  var dbo2 = db.db("Users");
