@@ -27,13 +27,15 @@ function Login_Validation(usern, passw)
             var looking_for = { username:usern, password:passw };
             dbo.collection("Users").findOne(looking_for, function(err, res) {
               if (err) throw err;
-              validation = true;
+	      if (res == null)
+		{
+			return false;
+		}
               console.log(res);
               db.close();
             });
         });
 
-   console.log("WE ARE HERE");
    return true;
 }
 
