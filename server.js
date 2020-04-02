@@ -15,7 +15,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
-/*MongoClient.connect(uri, function (err,client){
+MongoClient.connect(uri, function (err,client){
  console.log("Start the database stuff");
  var dbo = client.db("Scores");
  var obj = { username:"user 1", score:"0" };
@@ -33,7 +33,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
  });
  console.log("End the database stuff");
 });
-*/
+
 // END OF DATABASE
 
 
