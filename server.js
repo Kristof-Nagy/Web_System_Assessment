@@ -16,6 +16,14 @@ const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?ret
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 // Add Username & Password
+function Add_Server_Username_Password (usern, passw)
+{
+  client.connect(err => {
+   const collection = client.db("Logins").collection("Users");
+   collection.insertOne(username:usern, password:passw);
+   client.close();
+  }
+}
 
 var r_username = "will need to retrieve from client";
 var r_password = "this is password";
@@ -63,6 +71,7 @@ app.route("/register")
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const nickname = req.body.nickname;
+  Add_Server_Username_Password(firstname, lastname);
   res.send(firstname + " " + lastname + " " + nickname);
  });
 
