@@ -17,12 +17,18 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 
 // Add Username & Password
 
+var r_username = "will need to retrieve from client";
+var r_password = "this is password";
+
+var r_user = "a user";
+var r_score = "32";
+
 client.connect(err => {
   const collection = client.db("Logins").collection("Users");
   const collection2 = client.db("Game").collection("Score");
 
-  collection.insertOne({username:"root", password:"toor"});
-  collection2.insertOne({user:"root", score:"50"});
+  collection.insertOne({username:r_username, password:r_password});
+  collection2.insertOne({user:r_user, score:r_score});
 
   client.close();
 });
