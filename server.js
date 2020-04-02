@@ -86,7 +86,7 @@ app.route('/login')
  const nickname = req.body.nickname;
  const password = req.body.pswd;
 
- if (Login_Validation(nickname, password))
+ if (Login_Validation(nickname, password) == true)
  {
 	console.log("INSIDE");
  }
