@@ -63,6 +63,7 @@ app.route("/register")
   const fistname = req.body.firstname;
   const lastname = req.body.lastname;
   const nickname = req.body.nickname;
+  console.log(firstname + " " + lastname + " " + nickname);
  });
 
 app.route("/about_us")
