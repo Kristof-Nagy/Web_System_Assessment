@@ -53,7 +53,6 @@ function Login_Validation(usern, passw)
 			console.log("DID NOT FIND IT");
 		}
 	    db.close();
-            });
         });
 
 
