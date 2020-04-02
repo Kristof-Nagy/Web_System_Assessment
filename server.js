@@ -24,7 +24,7 @@ function Add_Server_Username_Password (usern, passw)
    client.close();
   });
 }
-
+/*
 var r_username = "will need to retrieve from client";
 var r_password = "this is password";
 
@@ -40,7 +40,7 @@ client.connect(err => {
 
   client.close();
 });
-
+*/
 // END OF DATABASE
 
 
