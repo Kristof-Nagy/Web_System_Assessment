@@ -18,6 +18,22 @@ const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongo
 const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Game?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
 //const client = new MongoClient(uri, { useNewUrlParser: true });
 
+function Login_Validation(usern, passw)
+{
+   MongoClient.connect(logins_uri, function (err, db) {
+            if(err) throw err;
+            //Write databse Insert/Update/Query code here..
+            var dbo = db.db("Logins");
+            var looking_for = { username: usern, password: passw };
+            dbo.collection("Users").findOne(myobj, function(err, res) {
+              if (err) throw err;
+              console.log(res);
+              db.close();
+            });
+        });
+
+}
+
 
 function Add_Server_Username_Password (usern, passw)
 {
@@ -66,6 +82,10 @@ app.route('/login')
  })
  // process the form (POST http://localhost:PORT/login)
  .post(urlencodedParser, function(req, res) {
+ const nickname = req.body.nickname;
+ const password = req.body.pswd;
+
+ 
 
  console.log(req.body);
  res.send(req.body.nickname + " " + req.body.pswd);
