@@ -22,12 +22,14 @@ MongoClient.connect(uri, function (err,db){
  dbo.collection("GameScore").insertOne(obj, function(err, res){
   if (err) throw err;
   console.log("1 user inserted");
+  db.close();
  });
 
  var dbo2 = db.db("Users");
  var obj2 = { username:"habanta", password:"paladin07" };
  dbo2.collection("UsersDetail").insertOne(obj2, function(err, res){
   if (err) throw err;
+  db.close();
  });
  console.log("End the database stuff");
 });
