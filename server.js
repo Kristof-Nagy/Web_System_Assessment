@@ -14,12 +14,16 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
+
+// Add Username & Password
+
 client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  const collection2 = client.db("test").collection("somethinelse");
-  collection.insertOne({a:"a", b:"b"});
-  collection2.insertOne({c:"c"});
-  // perform actions on the collection object
+  const collection = client.db("Logins").collection("Users");
+  const collection2 = client.db("Game").collection("Score");
+
+  collection.insertOne({username:"root", password:"toor"});
+  collection2.insertOne({user:"root", score:"50"});
+
   client.close();
 });
 
