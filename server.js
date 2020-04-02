@@ -11,10 +11,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // DATABASE
 
-/*const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-*/
 // Add Username & Password
 
 const MongoClient = require('mongodb').MongoClient;
@@ -25,12 +21,6 @@ const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb
 
 function Add_Server_Username_Password (usern, passw)
 {
-   /*client.connect(err => {
-   const collection = client.db("Logins").collection("Users");
-   collection.insertOne({username:usern, password:passw});
-   client.close();
-   });
-*/
    MongoClient.connect(logins_uri, function (err, db) {
             if(err) throw err;
             //Write databse Insert/Update/Query code here..
@@ -59,23 +49,6 @@ function Add_Server_Username_Score(usern, score)
         });
 }
 
-/*
-var r_username = "will need to retrieve from client";
-var r_password = "this is password";
-
-var r_user = "a user";
-var r_score = "32";
-
-client.connect(err => {
-  const collection = client.db("Logins").collection("Users");
-  const collection2 = client.db("Game").collection("Score");
-
-  collection.insertOne({username:r_username, password:r_password});
-  collection2.insertOne({user:r_user, score:r_score});
-
-  client.close();
-});
-*/
 // END OF DATABASE
 
 
@@ -108,8 +81,8 @@ app.route("/register")
   const nickname = req.body.nickname;
   const password = req.body.pswd;
 
-  Add_Server_Username_Password(firstname, lastname);
-  res.send(firstname + " " + lastname + " " + password);
+  Add_Server_Username_Password(nickname, password);
+  //res.send(firstname + " " + lastname + " " + password);
  });
 
 app.route("/about_us")
