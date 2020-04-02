@@ -16,7 +16,9 @@ const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?ret
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
+  const collection2 = cliend.db("test").collection("somethinelse");
   collection.insertOne({a:"a", b:"b"});
+  collection2.insertOne({c:"c"});
   // perform actions on the collection object
   client.close();
 });
