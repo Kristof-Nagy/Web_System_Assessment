@@ -60,7 +60,7 @@ app.route("/register")
   res.sendFile(__dirname + "/register.html");
  })
  .post(urlencodedParser, function(req, res) {
-  const fistname = req.body.firstname;
+  const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const nickname = req.body.nickname;
   res.send(firstname + " " + lastname + " " + nickname);
