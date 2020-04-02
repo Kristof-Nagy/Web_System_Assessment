@@ -85,10 +85,10 @@ app.route('/login')
  const nickname = req.body.nickname;
  const password = req.body.pswd;
 
- 
+ LoginValidation(nickname, password);
 
- console.log(req.body);
- res.send(req.body.nickname + " " + req.body.pswd);
+ //console.log(req.body);
+ //res.send(req.body.nickname + " " + req.body.pswd);
  });
 
 app.route("/register")
