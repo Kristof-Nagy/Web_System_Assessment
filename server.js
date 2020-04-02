@@ -57,10 +57,12 @@ app.route('/login')
 
 app.route("/register")
  .get(function(req, res) {
- res.sendFile(__dirname + "/register.html");
+  res.sendFile(__dirname + "/register.html");
  })
  .post(function(req, res) {
- res.send("processing the register form!");
+  const fistname = req.body.firstname;
+  const lastname = req.body.lastname;
+  const nickname = req.body.nickname;
  });
 
 app.route("/about_us")
