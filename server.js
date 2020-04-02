@@ -85,7 +85,7 @@ app.route('/login')
  const nickname = req.body.nickname;
  const password = req.body.pswd;
 
- LoginValidation(nickname, password);
+ Login_Validation(nickname, password);
 
  //console.log(req.body);
  //res.send(req.body.nickname + " " + req.body.pswd);
