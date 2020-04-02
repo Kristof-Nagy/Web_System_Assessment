@@ -108,7 +108,7 @@ app.route("/register")
   const nickname = req.body.nickname;
   const password = req.body.pswd;
 
-  //Add_Server_Username_Password(firstname, lastname);
+  Add_Server_Username_Password(firstname, lastname);
   res.send(firstname + " " + lastname + " " + password);
  });
 
