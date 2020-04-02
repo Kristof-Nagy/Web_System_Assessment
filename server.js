@@ -20,7 +20,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 const MongoClient = require('mongodb').MongoClient;
 const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Logins?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
 const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Game?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
-const client = new MongoClient(uri, { useNewUrlParser: true });
+//const client = new MongoClient(uri, { useNewUrlParser: true });
 
 
 function Add_Server_Username_Password (usern, passw)
