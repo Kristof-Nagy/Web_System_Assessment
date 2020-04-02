@@ -20,7 +20,7 @@ const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb
 
 function Login_Validation(usern, passw)
 {
-   /*MongoClient.connect(logins_uri, function (err, db) {
+   MongoClient.connect(logins_uri, function (err, db) {
             if(err) throw err;
             //Write databse Insert/Update/Query code here..
             var dbo = db.db("Logins");
@@ -29,46 +29,17 @@ function Login_Validation(usern, passw)
               if (err) throw err;
 	      if (res == null)
 		{
+			console.log(res);
 			console.log("NULL");
 		}
 	      else {
+			console.log(res);
 			console.log("NOT NULL");
 		}
               //console.log(res);
               db.close();
             });
-        });*/
-
- MongoClient.connect(logins_uri, function (err, db) {
-            if(err) throw err;
-            //Write databse Insert/Update/Query code here..
-            var dbo = db.db("Logins");
-            var looking_for = { username:usern, password:passw };
-            var result = dbo.collection("Users").findOne(looking_for);
-            if (result != null)
-		{
-			console.log(result);
-			console.log("FOUND IT");
-		}
-	    else{
-			console.log(result);
-			console.log("DID NOT FIND IT");
-		}
-	    db.close();
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
