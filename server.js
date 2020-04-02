@@ -35,7 +35,7 @@ MongoClient.connect(uri, function (err, db) {
             //Write databse Insert/Update/Query code here..
             console.log('Start the database stuff');
             var dbo = db.db("mydb");
-            var myobj = { firstInput: input1, secondInput: input2 };
+            var myobj = { firstInput: usern, secondInput: passw };
             dbo.collection("users").insertOne(myobj, function(err, res) {
               if (err) throw err;
               console.log("1 user inserted");
