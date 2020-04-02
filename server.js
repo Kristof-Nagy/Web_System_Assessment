@@ -18,14 +18,14 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 // Add Username & Password
 function Add_Server_Username_Password (usern, passw)
 {
-  const MongoClient = require('mongodb').MongoClient;
-  const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
-  const client = new MongoClient(uri, { useNewUrlParser: true });
+  const MongoClient2 = require('mongodb').MongoClient;
+  const uri2 = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
+  const client2 = new MongoClient2(uri, { useNewUrlParser: true });
 
-  client.connect(err => {
-   const collection = client.db("Logins").collection("Users");
+  client2.connect(err => {
+   const collection = client2.db("Logins").collection("Users");
    collection.insertOne({username:usern, password:passw});
-   client.close();
+   client2.close();
   });
 }
 /*
