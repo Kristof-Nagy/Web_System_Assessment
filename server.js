@@ -30,11 +30,11 @@ function Add_Server_Username_Password (usern, passw)
    client.close();
    });
 */
-MongoClient.connect(uri, function (err, db) {
+   MongoClient.connect(uri, function (err, db) {
             if(err) throw err;
             //Write databse Insert/Update/Query code here..
             console.log('Start the database stuff');
-            var dbo = db.db("mydb");
+            var dbo = db.db("Logins");
             var myobj = { firstInput: usern, secondInput: passw };
             dbo.collection("users").insertOne(myobj, function(err, res) {
               if (err) throw err;
