@@ -11,11 +11,11 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // DATABASE
 
-/*const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
-MongoClient.connect(uri, function (err,client){
+client.connect(uri, function (err,client){
  console.log("Start the database stuff");
  var dbo = client.db("Scores");
  var obj = { username:"user 1", score:"0" };
@@ -33,11 +33,11 @@ MongoClient.connect(uri, function (err,client){
  });
  console.log("End the database stuff");
 });
-*/
+
 // ANOTHER TRY
 
 
-const MongoClient = require('mongodb').MongoClient;
+/*const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
@@ -45,7 +45,7 @@ client.connect(err => {
   collection.insertOne({a:"a", b:"b"});
   // perform actions on the collection object
   client.close();
-});
+});*/
 
 // END OF DATABASE
 
