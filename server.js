@@ -20,6 +20,8 @@ const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb
 
 function Login_Validation(usern, passw)
 {
+   var validation = false;
+
    MongoClient.connect(logins_uri, function (err, db) {
             if(err) throw err;
             //Write databse Insert/Update/Query code here..
@@ -27,10 +29,12 @@ function Login_Validation(usern, passw)
             var looking_for = { username: usern, password: passw };
             dbo.collection("Users").findOne(looking_for, function(err, res) {
               if (err) throw err;
+              validation = true;
               console.log(res);
               db.close();
             });
         });
+   return validation;
 
 }
 
@@ -85,7 +89,15 @@ app.route('/login')
  const nickname = req.body.nickname;
  const password = req.body.pswd;
 
- Login_Validation(nickname, password);
+ if (Login_Validation(nickname, password))
+ {
+	console.log("INSIDE");
+ }
+ else{
+	console.log("NOT INSIDE");
+ }
+
+
 
  //console.log(req.body);
  //res.send(req.body.nickname + " " + req.body.pswd);
