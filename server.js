@@ -18,8 +18,8 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 // Add Username & Password
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Logins?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
-//const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/Logins?retryWrites=true&w=majority&authSource=admin";
+const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Logins?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
+const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Game?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 
@@ -31,20 +31,34 @@ function Add_Server_Username_Password (usern, passw)
    client.close();
    });
 */
-   MongoClient.connect(uri, function (err, db) {
+   MongoClient.connect(logins_uri, function (err, db) {
             if(err) throw err;
             //Write databse Insert/Update/Query code here..
-            console.log('Start the database stuff');
             var dbo = db.db("Logins");
-            var myobj = { firstInput: usern, secondInput: passw };
-            dbo.collection("users").insertOne(myobj, function(err, res) {
+            var myobj = { username: usern, password: passw };
+            dbo.collection("Users").insertOne(myobj, function(err, res) {
               if (err) throw err;
               console.log("1 user inserted");
               db.close();
             });
-            console.log('End the database stuff');
         });
 }
+
+function Add_Server_Username_Score(usern, score)
+{
+   MongoClient.connect(game_uri, function (err, db) {
+            if(err) throw err;
+            //Write databse Insert/Update/Query code here..
+            var dbo = db.db("Logins");
+            var myobj = { username: usern, score: score };
+            dbo.collection("Score").insertOne(myobj, function(err, res) {
+              if (err) throw err;
+              console.log("1 score inserted");
+              db.close();
+            });
+        });
+}
+
 /*
 var r_username = "will need to retrieve from client";
 var r_password = "this is password";
@@ -92,9 +106,10 @@ app.route("/register")
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const nickname = req.body.nickname;
+  const password = req.body.pswd;
 
-  Add_Server_Username_Password(firstname, lastname);
-  res.send(firstname + " " + lastname + " " + nickname);
+  //Add_Server_Username_Password(firstname, lastname);
+  res.send(firstname + " " + lastname + " " + password);
  });
 
 app.route("/about_us")
