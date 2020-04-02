@@ -15,21 +15,21 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
-MongoClient.connect(uri, function (err,db){
+MongoClient.connect(uri, function (err,client){
  console.log("Start the database stuff");
- var dbo = db.db("Scores");
+ var dbo = client.db("Scores");
  var obj = { username:"user 1", score:"0" };
  dbo.collection("GameScore").insertOne(obj, function(err, res){
   if (err) throw err;
   console.log("1 user inserted");
-  db.close();
+  client.close();
  });
 
- var dbo2 = db.db("Users");
+ var dbo2 = client.db("Users");
  var obj2 = { username:"habanta", password:"paladin07" };
  dbo2.collection("UsersDetail").insertOne(obj2, function(err, res){
   if (err) throw err;
-  db.close();
+  client.close();
  });
  console.log("End the database stuff");
 });
