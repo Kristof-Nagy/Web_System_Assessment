@@ -20,8 +20,6 @@ const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb
 
 function Login_Validation(usern, passw)
 {
-   var validation = false;
-
    MongoClient.connect(logins_uri, function (err, db) {
             if(err) throw err;
             //Write databse Insert/Update/Query code here..
@@ -32,10 +30,9 @@ function Login_Validation(usern, passw)
               validation = true;
               console.log(res);
               db.close();
+	      return true;
             });
         });
-   return validation;
-
 }
 
 
