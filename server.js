@@ -24,15 +24,17 @@ function Login_Validation(usern, passw)
             if(err) throw err;
             //Write databse Insert/Update/Query code here..
             var dbo = db.db("Logins");
-            var looking_for = { username: usern, password: passw };
+            var looking_for = { username:usern, password:passw };
             dbo.collection("Users").findOne(looking_for, function(err, res) {
               if (err) throw err;
               validation = true;
               console.log(res);
               db.close();
-	      return true;
             });
         });
+
+   console.log("WE ARE HERE");
+   return true;
 }
 
 
