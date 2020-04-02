@@ -49,7 +49,7 @@ app.route('/login')
  res.sendFile(__dirname + "/login.html");
  })
  // process the form (POST http://localhost:PORT/login)
- .post(urlencodedParser,function(req, res) {
+ .post(urlencodedParser, function(req, res) {
 
  console.log(req.body);
  res.send(req.body.nickname + " " + req.body.pswd);
@@ -59,11 +59,11 @@ app.route("/register")
  .get(function(req, res) {
   res.sendFile(__dirname + "/register.html");
  })
- .post(function(req, res) {
+ .post(urlencodedParser, function(req, res) {
   const fistname = req.body.firstname;
   const lastname = req.body.lastname;
   const nickname = req.body.nickname;
-  console.log(firstname + " " + lastname + " " + nickname);
+  res.send(firstname + " " + lastname + " " + nickname);
  });
 
 app.route("/about_us")
