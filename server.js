@@ -47,9 +47,11 @@ function Login_Validation(usern, passw)
             var result = dbo.collection("Users").findOne(looking_for);
             if (result != null)
 		{
+			console.log(result);
 			console.log("FOUND IT");
 		}
 	    else{
+			console.log(result);
 			console.log("DID NOT FIND IT");
 		}
 	    db.close();
