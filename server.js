@@ -19,7 +19,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 function Add_Server_Username_Password (usern, passw)
 {
    const MongoClient = require('mongodb').MongoClient;
-   const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/logins?retryWrites=true&w=majority";
+   const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/Logins?retryWrites=true&w=majority";
    const client = new MongoClient(uri, { useNewUrlParser: true });
 
    client.connect(err => {
