@@ -16,17 +16,33 @@ const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?ret
 const client = new MongoClient(uri, { useNewUrlParser: true });
 */
 // Add Username & Password
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/Logins?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+
+
 function Add_Server_Username_Password (usern, passw)
 {
-   const MongoClient = require('mongodb').MongoClient;
-   const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/Logins?retryWrites=true&w=majority";
-   const client = new MongoClient(uri, { useNewUrlParser: true });
-
-   client.connect(err => {
+   /*client.connect(err => {
    const collection = client.db("Logins").collection("Users");
    collection.insertOne({username:usern, password:passw});
    client.close();
-  });
+   });
+*/
+MongoClient.connect(uri, function (err, db) {
+            if(err) throw err;
+            //Write databse Insert/Update/Query code here..
+            console.log('Start the database stuff');
+            var dbo = db.db("mydb");
+            var myobj = { firstInput: input1, secondInput: input2 };
+            dbo.collection("users").insertOne(myobj, function(err, res) {
+              if (err) throw err;
+              console.log("1 user inserted");
+              db.close();
+            });
+            console.log('End the database stuff');
+        });
 }
 /*
 var r_username = "will need to retrieve from client";
