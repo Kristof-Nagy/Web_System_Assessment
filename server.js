@@ -29,14 +29,15 @@ function Login_Validation(usern, passw)
               if (err) throw err;
 	      if (res == null)
 		{
-			return false;
+			console.log("NULL");
+		}
+	      else {
+			console.log("NOT NULL");
 		}
               console.log(res);
               db.close();
             });
         });
-
-   return true;
 }
 
 
