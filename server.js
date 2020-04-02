@@ -14,38 +14,12 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
-
-client.connect(uri, function (err,client){
- console.log("Start the database stuff");
- var dbo = client.db("Scores");
- var obj = { username:"user 1", score:"0" };
- dbo.collection("GameScore").insertOne(obj, function(err, res){
-  if (err) throw err;
-  console.log("1 user inserted");
-  client.close();
- });
-
- var dbo2 = client.db("Users");
- var obj2 = { username:"habanta", password:"paladin07" };
- dbo2.collection("UsersDetail").insertOne(obj2, function(err, res){
-  if (err) throw err;
-  client.close();
- });
- console.log("End the database stuff");
-});
-
-// ANOTHER TRY
-
-
-/*const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
   collection.insertOne({a:"a", b:"b"});
   // perform actions on the collection object
   client.close();
-});*/
+});
 
 // END OF DATABASE
 
