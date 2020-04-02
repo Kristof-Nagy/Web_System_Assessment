@@ -18,7 +18,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 // Add Username & Password
 function Add_Server_Username_Password (usern, passw)
 {
-  client2.connect(err => {
+  client.connect(err => {
    const collection = client.db("Logins").collection("Users");
    collection.insertOne({username:usern, password:passw});
    client.close();
