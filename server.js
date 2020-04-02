@@ -20,7 +20,7 @@ function Add_Server_Username_Password (usern, passw)
 {
   client.connect(err => {
    const collection = client.db("Logins").collection("Users");
-   collection.insertOne(username:usern, password:passw);
+   collection.insertOne({username:usern, password:passw});
    client.close();
   }
 }
