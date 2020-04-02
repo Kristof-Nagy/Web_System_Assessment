@@ -25,7 +25,7 @@ function Login_Validation(usern, passw)
             //Write databse Insert/Update/Query code here..
             var dbo = db.db("Logins");
             var looking_for = { username: usern, password: passw };
-            dbo.collection("Users").findOne(myobj, function(err, res) {
+            dbo.collection("Users").findOne(looking_for, function(err, res) {
               if (err) throw err;
               console.log(res);
               db.close();
