@@ -24,7 +24,6 @@ function Add_Server_Username_Password (usern, passw)
    client.close();
   });
 }
-Add_Server_Username_Password("adsfléaksdéfaskdf", "aksdléfjasdjféajksdéflaléksdjfélkasd");
 /*
 var r_username = "will need to retrieve from client";
 var r_password = "this is password";
@@ -72,10 +71,6 @@ app.route("/register")
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const nickname = req.body.nickname;
-  
-  const MongoClient = require('mongodb').MongoClient;
-  const uri = "mongodb+srv://Tofu:tofu@websystemcluster-gbe8g.mongodb.net/test?retryWrites=true&w=majority";
-  const client = new MongoClient(uri, { useNewUrlParser: true });
 
   Add_Server_Username_Password(firstname, lastname);
   res.send(firstname + " " + lastname + " " + nickname);
