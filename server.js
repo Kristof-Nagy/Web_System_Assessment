@@ -28,7 +28,7 @@ loginschema.save((error) => {
 		console.log(error);
 	}
 	console.log("Saved 1 instance");
-}
+});
 
 
 
