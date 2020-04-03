@@ -101,9 +101,7 @@ app.route('/login')
  const password = req.body.pswd;
 
  Login_Authentication(nickname, password, req, res)
- if(res.status() == 200){
-	 res.redirect("/game");
- }
+ console.log(res.status());
  });
 
 app.route("/register")
