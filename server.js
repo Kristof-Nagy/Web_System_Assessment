@@ -18,7 +18,7 @@ const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongo
 //const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongod$
 const client = new MongoClient(logins_uri, { useNewUrlParser: true });
 
-mongoose.connect(client);
+mongoose.connect(logins_uri);
 
 const { Schema } = mongoose;
 
