@@ -70,7 +70,7 @@ function Login_Authentication(usern, passw, req, res)
 		{
 			//console.log("200");
 			req.session.user = user;
-			res.redirect("/game");
+			return res.status(200).send();
 		}
 
 		if (!user)
@@ -114,6 +114,7 @@ app.route("/register")
   const password = req.body.pswd;
 
   Add_User(nickname, password, res);
+  res.redirect("/game");
  });
 
 app.route("/about_us")
@@ -123,10 +124,6 @@ app.route("/about_us")
 
 app.route("/game")
  .get(function(req,res) {
-	res.render('form'); //if jade
- 	// You should use one of line depending on type of frontend you are with
- 	res.sendFile(__dirname + '/login.html'); //if html file is root directory
- 	//res.send("Hello " + req.session.user.username);
 	res.sendFile(__dirname + "/game.html")
  });
 
