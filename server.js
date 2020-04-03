@@ -42,7 +42,7 @@ user.save((error) => {
 */
 
 
-var result = User.find({}, function(error, documents){
+var result = User.findOne({username:"a", password:"a"}, function(error, documents){
 	console.log(documents);
 })
 
