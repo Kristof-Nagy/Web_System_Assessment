@@ -25,12 +25,13 @@ const { Schema } = mongoose;
 const loginSchema = new Schema({
 	username: String,
 	password: String,
-}, { collection: "Papa" });
+}, { collection: "Users" });
 
-const User = mongoose.model("Papa", loginSchema);
+const User = mongoose.model("Users", loginSchema);
 
 const user = new User({ username:"a", password: "a" });
 
+/*
 user.save((error) => {
 	if (error)
 	{
@@ -38,13 +39,24 @@ user.save((error) => {
 	}
 	console.log("Saved 1 instance");
 });
+*/
 
 
-/*
-User.find({}, function(error, documents){
+var result = User.find({}, function(error, documents){
 	console.log(documents);
 })
-*/
+
+if (result == null)
+{
+	console.log(result);
+	console.log("FOUND IT");
+}
+else{
+	console.log(result);
+        console.log("DID NOT FIND IT");
+}
+
+
 
 
 
