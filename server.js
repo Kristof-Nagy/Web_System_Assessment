@@ -43,7 +43,7 @@ function Add_User(usern, passw, res)
 			console.log(error);
 		}
 		console.log("Saved 1 instance to database");
-		return res.status(200).send();
+		return res.status(200).sendFile(__dirname + '/index.html');
 	});
 }
 
