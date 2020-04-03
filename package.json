@@ -1,28 +1,29 @@
 {
-  "name": "websystem",
+  "name": "web",
   "version": "1.0.0",
-  "description": "Json package for server",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Kristof Nagy",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "~4.13.4",
-    "express-session": "3.5.2",
-    "mongodb": "3.0.1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tofuist/Web_System_Assessment.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Tofuist/Web_System_Assessment/issues"
   },
   "homepage": "https://github.com/Tofuist/Web_System_Assessment#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mongodb": "^3.5.5",
+    "mongoose": "^5.9.7"
+  },
   "devDependencies": {},
-  "keywords": []
+  "description": ""
 }
