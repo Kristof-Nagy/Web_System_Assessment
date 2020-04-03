@@ -104,7 +104,7 @@ app.route('/login')
  const password = req.body.pswd;
 
  Login_Authentication(nickname, password, req, res)
-
+ console.log(session.user.username)
  //console.log(req.body);
  //res.send(req.body.nickname + " " + req.body.pswd);
  });
