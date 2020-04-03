@@ -14,7 +14,7 @@ const loginschema = require("./model/mongoose_chema");
 // DATABASE
 
 const MongoClient = require('mongodb').MongoClient;
-const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mong$
+const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Logins?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
 //const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongod$
 const client = new MongoClient(logins_uri, { useNewUrlParser: true });
 
