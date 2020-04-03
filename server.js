@@ -30,7 +30,7 @@ const loginSchema = new Schema({
 const User = mongoose.model("User", loginSchema);
 
 const user = new User({ username:"aa", password: "aa" });
-
+/*
 user.save((error) => {
 	if (error)
 	{
@@ -38,9 +38,11 @@ user.save((error) => {
 	}
 	console.log("Saved 1 instance");
 });
+*/
 
-
-
+user.find({}, function(error, documents){
+	console.log(documents);
+})
 
 
 
