@@ -1,8 +1,8 @@
 // load the express package and create our app
 var express = require('express');
 var app     = express();
-const session = require("express-session");
-
+var session = require("express-session");
+var MongoDBStore = require("connect-mongodb-session")(session);
 
 const PORT = process.env.PORT || 8080;
 // set the port based on environment (more on environments later)
@@ -13,6 +13,11 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const mongoose = require("mongoose");
+
+var store = new MongoDBStore({
+	uri:"mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Logins?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin",
+	collection:"Users"
+})
 
 
 app.use(session({secret:"398zrhauwh4tliasdf", resave:false, saveUninitialized:true}));
