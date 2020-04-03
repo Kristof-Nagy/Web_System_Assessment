@@ -2,7 +2,6 @@
 var express = require('express');
 var app     = express();
 const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
 
 
 const PORT = process.env.PORT || 8080;
