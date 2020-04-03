@@ -57,7 +57,7 @@ function Add_User(usern, passw, res)
 	});
 }
 
-function Login_Authentication(usern, passw, res)
+function Login_Authentication(usern, passw, req, res)
 {
 	User.findOne({username:usern, password:passw}, function(error, user){
 		if (error)
@@ -103,7 +103,7 @@ app.route('/login')
  const nickname = req.body.nickname;
  const password = req.body.pswd;
 
- Login_Authentication(nickname, password, res)
+ Login_Authentication(nickname, password, req, res)
 
  //console.log(req.body);
  //res.send(req.body.nickname + " " + req.body.pswd);
