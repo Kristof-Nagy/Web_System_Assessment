@@ -16,7 +16,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const mongoose = require("mongoose");
 
 
-app.use(session({secret:"398zrhauwh4tliasdf", store: new MongoStore()));
+app.use(session({secret:"398zrhauwh4tliasdf", store: new MongoStore()}));
 
 
 // DATABASE
