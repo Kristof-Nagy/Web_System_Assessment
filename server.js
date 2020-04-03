@@ -70,7 +70,7 @@ function Login_Authentication(usern, passw, req, res)
 		{
 			//console.log("200");
 			req.session.user = user;
-			return res.status(200).send();
+			return res.status(200).sendFile(__dirname + '/game.html');
 		}
 
 		if (!user)
@@ -101,7 +101,6 @@ app.route('/login')
  const password = req.body.pswd;
 
  Login_Authentication(nickname, password, req, res)
- console.log(res.status());
  });
 
 app.route("/register")
