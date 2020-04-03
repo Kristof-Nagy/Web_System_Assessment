@@ -27,11 +27,11 @@ const loginSchema = new Schema({
 	password: String,
 });
 
-const Aser = mongoose.model("UUser", loginSchema);
+const User = mongoose.model("User", loginSchema);
 
-const blabla = new Aser({ username:"aaaa", password: "aaaa" });
+const user = new Aser({ username:"a", password: "a" });
 
-blabla.save((error) => {
+user.save((error) => {
 	if (error)
 	{
 		console.log(error);
