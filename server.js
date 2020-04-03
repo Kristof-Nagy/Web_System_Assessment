@@ -40,7 +40,7 @@ user.save((error) => {
 });
 */
 
-user.find({}, function(error, documents){
+User.find({}, function(error, documents){
 	console.log(documents);
 })
 
