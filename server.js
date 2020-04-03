@@ -1,6 +1,8 @@
 // load the express package and create our app
 var express = require('express');
 var app     = express();
+var session = require("express-session");
+
 const PORT = process.env.PORT || 8080;
 // set the port based on environment (more on environments later)
 var port    = PORT;
@@ -11,6 +13,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const mongoose = require("mongoose");
 
+
+app.use(session({secret:"398zrhauwh4tliasdf", resave:false, saveUninitialized:true}));
 
 
 // DATABASE
@@ -61,6 +65,7 @@ function Login_Authentication(usern, passw, res)
 		{
 			return res.status(200).sendFile(__dirname + '/game.html');
 			//console.log("200");
+			req.session.user = user;
 		}
 
 		if (!user)
@@ -119,7 +124,11 @@ app.route("/about_us")
 
 app.route("/game")
  .get(function(req,res) {
- res.sendFile(__dirname + "/game.html")
+	if (!req.session.user)
+	{
+		return res.status(401).send();
+	}
+ 	res.sendFile(__dirname + "/game.html")
  });
 
 app.route("/highscore")
