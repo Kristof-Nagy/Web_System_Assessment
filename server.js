@@ -130,7 +130,7 @@ app.route("/about_us")
 
 app.route("/game")
  .get(function(req,res) {
- 	res.send("Hello " + JSON.stringify(req.session.user.username));
+ 	res.send("Hello " + req.session.user.username);
 	//res.sendFile(__dirname + "/game.html")
  });
 
