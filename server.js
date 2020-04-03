@@ -45,18 +45,18 @@ user.save((error) => {
 User.findOne({username:"a", password:"a"}, function(error, user){
 	if (error)
         {
-                return.res.status(500).send();
+		console.log("500");
         }
 
 
 	if (user)
 	{
-		return.res.status(200).send();
+		console.log("200");
 	}
 
 	if (!user)
         {
-                return.res.status(404).send();
+		console.log("404");
         }
 
 })
