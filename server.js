@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const mongoose = require("mongoose");
-const loginschema = require("./model/mongoose_chema");
+//const loginschema = require("./model/mongoose_chema");
 // DATABASE
 
 const MongoClient = require('mongodb').MongoClient;
@@ -20,9 +20,18 @@ const client = new MongoClient(logins_uri, { useNewUrlParser: true });
 
 mongoose.connect(client);
 
-const user = { username:"a", password: "a" };
+const { Schema } = mongoose;
 
-loginschema.save((error) => {
+const loginSchema = new Schema({
+	username: String,
+	password: String,
+});
+
+const User = mongoose.model("User", loginSchema);
+
+const user = new User({ username:"aa", password: "aa" });
+
+user.save((error) => {
 	if (error)
 	{
 		console.log(error);
