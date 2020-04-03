@@ -34,7 +34,7 @@ const User = mongoose.model("Users", loginSchema);
 
 
 
-function Add_User(usern, passw)
+function Add_User(usern, passw, res)
 {
 	const user = new User({ username:usern, password:passw });
 	user.save((error) => {
@@ -43,6 +43,7 @@ function Add_User(usern, passw)
 			console.log(error);
 		}
 		console.log("Saved 1 instance to database");
+		return res.status(200).send();
 	});
 }
 
