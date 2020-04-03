@@ -117,6 +117,17 @@ app.route("/about_us")
  res.sendFile(__dirname + "/about_us.html")
  });
 
+app.route("/game")
+ .get(function(req,res) {
+ res.sendFile(__dirname + "/game.html")
+ });
+
+app.route("/highscore")
+ .get(function(req,res) {
+ res.sendFile(__dirname + "/highscore.html")
+ });
+
+
 // start the server
 app.listen(PORT, function(){
  console.log('Express Server running at http://127.0.0.1:'.PORT);
