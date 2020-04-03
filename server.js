@@ -69,9 +69,9 @@ function Login_Authentication(usern, passw, res)
 
 		if (user)
 		{
-			return res.status(200).sendFile(__dirname + '/game.html');
 			//console.log("200");
 			req.session.user = user;
+			return res.status(200).send();
 		}
 
 		if (!user)
