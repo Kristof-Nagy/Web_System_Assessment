@@ -45,7 +45,9 @@ user.save((error) => {
 var result = "";
 User.findOne({username:"a", password:"a"}, function(error, documents){
 	console.log(documents);
+	if(documents != null){
 	working();
+	}
 })
 
 function working()
