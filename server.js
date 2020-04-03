@@ -61,6 +61,47 @@ User.findOne({username:"a", password:"a"}, function(error, user){
 
 })
 
+User.findOne({username:"a", password:"ab"}, function(error, user){
+        if (error)
+        {
+                console.log("500");
+        }
+
+
+        if (user)
+        {
+                console.log("200");
+        }
+
+        if (!user)
+        {
+                console.log("404");
+        }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
