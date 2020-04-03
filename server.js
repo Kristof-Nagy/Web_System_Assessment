@@ -46,29 +46,26 @@ function Add_User(usern, passw)
 	});
 }
 
-function Login_Authentication(usern, passw)
+function Login_Authentication(usern, passw, res)
 {
 	User.findOne({username:usern, password:passw}, function(error, user){
 		if (error)
         	{
-			console.log("500");
+			return res.status(500).send();
         	}
 
 
 		if (user)
 		{
-			console.log("200");
+			return res.status(200).send();
 		}
 
 		if (!user)
 	        {
-			console.log("404");
+			return res.status(404).send();
 	        }
 })
 }
-
-Add_User("Pala","Galosz");
-
 
 // END OF DATABASE
 
@@ -104,7 +101,7 @@ app.route("/register")
   const nickname = req.body.nickname;
   const password = req.body.pswd;
 
-  Add_User(nickname, password);
+  Add_User(nickname, password, res);
   //res.send(firstname + " " + lastname + " " + password);
  });
 
