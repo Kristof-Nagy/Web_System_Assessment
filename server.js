@@ -20,7 +20,7 @@ var store = new MongoDBStore({
 })
 
 
-app.use(session({secret:"398zrhauwh4tliasdf", cookie: { maxAge: 1000 * 60 * 60 * 24 * 7}, store: store, resave:false, saveUninitialized:true}));
+app.use(session({secret:"398zrhauwh4tliasdf", cookie: { maxAge: 1000 * 60 * 60 * 24}, store: store, resave:false, saveUninitialized:true}));
 
 
 // DATABASE
@@ -130,7 +130,7 @@ app.route("/about_us")
 
 app.route("/game")
  .get(function(req,res) {
- 	res.send("Hello " + JSON.stringify(req.session));
+ 	res.send("Hello " + JSON.stringify(req.session.user);
 	//res.sendFile(__dirname + "/game.html")
  });
 
