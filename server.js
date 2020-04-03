@@ -53,20 +53,24 @@ function Login_Authentication(usern, passw, res)
 		if (error)
         	{
 			return res.status(500).send();
+			//console.log("500");
         	}
 
 
 		if (user)
 		{
 			return res.status(200).sendFile(__dirname + '/game.html');
+			//console.log("200");
 		}
 
 		if (!user)
 	        {
 			return res.status(404).send();
+			//console.log("404");
 	        }
-})
+	})
 }
+
 
 // END OF DATABASE
 
@@ -87,6 +91,8 @@ app.route('/login')
  .post(urlencodedParser, function(req, res) {
  const nickname = req.body.nickname;
  const password = req.body.pswd;
+
+ Login_Authentication(nickname, password, res)
 
  //console.log(req.body);
  //res.send(req.body.nickname + " " + req.body.pswd);
