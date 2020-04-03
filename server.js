@@ -42,28 +42,24 @@ user.save((error) => {
 */
 
 
-var result;
-User.findOne({username:"a", password:"a"}, function(error, documents){
-	console.log(documents);
-	if(documents != null){
-	  console.log("FIND");
-	  result = documents;
-	  console.log(result);
-	}
-})
+User.findOne({username:"a", password:"a"}, function(error, user){
+	if (error)
+        {
+                return.res.status(500).send();
+        }
 
-function working()
-{
-if (result == null)
-{
-	console.log(result);
-	console.log("FOUND IT");
-}
-else{
-	console.log(result);
-        console.log("DID NOT FIND IT");
-}
-}
+
+	if (user)
+	{
+		return.res.status(200).send();
+	}
+
+	if (!user)
+        {
+                return.res.status(404).send();
+        }
+
+})
 
 
 
