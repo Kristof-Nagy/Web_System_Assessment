@@ -27,7 +27,7 @@ const loginSchema = new Schema({
 	password: String,
 });
 
-const User = mongoose.model("User", loginSchema);
+const User = mongoose.model("Anakin", loginSchema);
 
 const user = new User({ username:"a", password: "a" });
 
