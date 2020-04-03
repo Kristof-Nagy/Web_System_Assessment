@@ -44,10 +44,12 @@ user.save((error) => {
 
 var result = "";
 User.findOne({username:"a", password:"a"}, function(error, documents){
-	result = documents;
 	console.log(documents);
+	working();
 })
 
+function working()
+{
 if (result == null)
 {
 	console.log(result);
@@ -57,7 +59,7 @@ else{
 	console.log(result);
         console.log("DID NOT FIND IT");
 }
-
+}
 
 
 
