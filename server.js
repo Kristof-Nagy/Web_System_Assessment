@@ -10,7 +10,9 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const mongoose = require("mongoose");
-//const loginschema = require("./model/mongoose_chema");
+
+
+
 // DATABASE
 
 const MongoClient = require('mongodb').MongoClient;
@@ -29,43 +31,107 @@ const loginSchema = new Schema({
 
 const User = mongoose.model("Users", loginSchema);
 
-const user = new User({ username:"a", password: "a" });
-
-/*
-user.save((error) => {
-	if (error)
-	{
-		console.log(error);
-	}
-	console.log("Saved 1 instance");
-});
-*/
-
-function authent(usern, passw){
-User.findOne({username:usern, password:passw}, function(error, user){
-	if (error)
-        {
-		console.log("500");
-        }
 
 
-	if (user)
-	{
-		console.log("200");
-	}
 
-	if (!user)
-        {
-		console.log("404");
-        }
+function Add_User(usern, passw)
+{
+	const user = new User({ username:usern, password:passw });
+	user.save((error) => {
+		if (error)
+		{
+			console.log(error);
+		}
+		console.log("Saved 1 instance to database");
+	});
+}
+
+function Login_Authentication(usern, passw)
+{
+	User.findOne({username:usern, password:passw}, function(error, user){
+		if (error)
+        	{
+			console.log("500");
+        	}
+
+
+		if (user)
+		{
+			console.log("200");
+		}
+
+		if (!user)
+	        {
+			console.log("404");
+	        }
 })
 }
 
-authent("a","a");
-authent("b","a");
+Add_User("Pala","Galosz");
+
+
+// END OF DATABASE
+
+
+// send our index.html file to the user for the home page
+app.get('/', function(req, res) {
+        res.sendFile(__dirname + '/index.html');
+      });
+
+app.use(express.static("public"));
+
+app.route('/login')
+ // show the form (GET http://localhost:PORT/login)
+ .get(function(req, res) {
+ res.sendFile(__dirname + "/login.html");
+ })
+ // process the form (POST http://localhost:PORT/login)
+ .post(urlencodedParser, function(req, res) {
+ const nickname = req.body.nickname;
+ const password = req.body.pswd;
+
+ /*if (Login_Validation(nickname, password) == true)
+ {
+	console.log("INSIDE");
+ }
+ else{
+	console.log("NOT INSIDE");
+ }*/
+
+
+
+ //console.log(req.body);
+ //res.send(req.body.nickname + " " + req.body.pswd);
+ });
+
+app.route("/register")
+ .get(function(req, res) {
+  res.sendFile(__dirname + "/register.html");
+ })
+ .post(urlencodedParser, function(req, res) {
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+  const nickname = req.body.nickname;
+  const password = req.body.pswd;
+
+  //Add_Server_Username_Password(nickname, password);
+  //res.send(firstname + " " + lastname + " " + password);
+ });
+
+app.route("/about_us")
+ .get(function(req, res) {
+ res.sendFile(__dirname + "/about_us.html")
+ });
+
+// start the server
+app.listen(PORT, function(){
+ console.log('Express Server running at http://127.0.0.1:'.PORT);
+});
 
 /*
-// Add Username & Password
+
+BACKUP PLAN (OLDER ONE) ********************
+
 
 const MongoClient = require('mongodb').MongoClient;
 const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Logins?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
@@ -127,60 +193,3 @@ function Add_Server_Username_Score(usern, score)
         });
 }
 */
-// END OF DATABASE
-
-
-// send our index.html file to the user for the home page
-app.get('/', function(req, res) {
-        res.sendFile(__dirname + '/index.html');
-      });
-
-app.use(express.static("public"));
-
-app.route('/login')
- // show the form (GET http://localhost:PORT/login)
- .get(function(req, res) {
- res.sendFile(__dirname + "/login.html");
- })
- // process the form (POST http://localhost:PORT/login)
- .post(urlencodedParser, function(req, res) {
- const nickname = req.body.nickname;
- const password = req.body.pswd;
-
- /*if (Login_Validation(nickname, password) == true)
- {
-	console.log("INSIDE");
- }
- else{
-	console.log("NOT INSIDE");
- }*/
-
-
-
- //console.log(req.body);
- //res.send(req.body.nickname + " " + req.body.pswd);
- });
-
-app.route("/register")
- .get(function(req, res) {
-  res.sendFile(__dirname + "/register.html");
- })
- .post(urlencodedParser, function(req, res) {
-  const firstname = req.body.firstname;
-  const lastname = req.body.lastname;
-  const nickname = req.body.nickname;
-  const password = req.body.pswd;
-
-  //Add_Server_Username_Password(nickname, password);
-  //res.send(firstname + " " + lastname + " " + password);
- });
-
-app.route("/about_us")
- .get(function(req, res) {
- res.sendFile(__dirname + "/about_us.html")
- });
-
-// start the server
-app.listen(PORT, function(){
- console.log('Express Server running at http://127.0.0.1:'.PORT);
-});
