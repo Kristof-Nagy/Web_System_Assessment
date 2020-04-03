@@ -48,7 +48,7 @@ User.findOne({username:"a", password:"a"}, function(error, documents){
 	if(documents != null){
 	  console.log("FIND");
 	  result = documents;
-	  working();
+	  console.log(result);
 	}
 })
 
