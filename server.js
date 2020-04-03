@@ -128,7 +128,7 @@ app.route("/game")
  	res.sendFile(__dirname + '/login.html'); //if html file is root directory
  	//res.send("Hello " + req.session.user.username);
 	res.sendFile(__dirname + "/game.html")
- });
+ })
  .post(urlencodedParser, function(req, res) {
  	const nickname = req.body.nickname;
 	const password = req.body.pswd;
