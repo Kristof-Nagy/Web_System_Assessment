@@ -90,16 +90,6 @@ app.route('/login')
  const nickname = req.body.nickname;
  const password = req.body.pswd;
 
- /*if (Login_Validation(nickname, password) == true)
- {
-	console.log("INSIDE");
- }
- else{
-	console.log("NOT INSIDE");
- }*/
-
-
-
  //console.log(req.body);
  //res.send(req.body.nickname + " " + req.body.pswd);
  });
@@ -114,7 +104,7 @@ app.route("/register")
   const nickname = req.body.nickname;
   const password = req.body.pswd;
 
-  //Add_Server_Username_Password(nickname, password);
+  Add_User(nickname, password);
   //res.send(firstname + " " + lastname + " " + password);
  });
 
