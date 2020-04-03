@@ -7,11 +7,19 @@
 	</head>
 
 	<body>
+	
+		<script type="text/javascript">
+			document.getElementById("myButton").onclick = function () {
+			location.href = "/game";
+			};
+		</script>
+
+
 		<div class="title">
 			<p>Login</p>
 		</div>
 		<div class="container">
-			<form target="_blank" method="post" action="/login">
+			<form method="post">
 				
 				<label for="nick_name">Nick Name</label>
 				<input type="text" id="nick_name" name="nickname" placeholder="Enter your nick name">
@@ -19,7 +27,7 @@
 				<label for="pswd">Password</label>
 				<input type="password" id="pswd" name="pswd" placeholder="Enter your password...">
 
-				<input type="submit" value="Login" onclick="/game">
+				<input id="myButton" type="submit" value="Login">
 			</form>
 			<br>
 			<a class="buttons" href="/">Back</a>
