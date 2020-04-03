@@ -18,7 +18,7 @@ const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongo
 //const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongod$
 const client = new MongoClient(logins_uri, { useNewUrlParser: true });
 
-mongoose.connect(logins_uri);
+mongoose.connect(logins_uri, { useNewUrlParser: true });
 
 const { Schema } = mongoose;
 
@@ -46,7 +46,7 @@ var result = "";
 User.findOne({username:"a", password:"a"}, function(error, documents){
 	console.log(documents);
 	if(documents != null){
-	working();
+	  console.log("FIND");
 	}
 })
 
