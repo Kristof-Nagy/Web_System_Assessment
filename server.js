@@ -29,22 +29,22 @@ const loginSchema = new Schema({
 
 const User = mongoose.model("User", loginSchema);
 
-const user = new User({ username:"aa", password: "aa" });
-/*
-user.save((error) => {
+const blabla = new User({ username:"aaa", password: "aaa" });
+
+blabla.save((error) => {
 	if (error)
 	{
 		console.log(error);
 	}
 	console.log("Saved 1 instance");
 });
-*/
 
+
+/*
 User.find({}, function(error, documents){
 	console.log(documents);
 })
-
-
+*/
 
 
 
