@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1616003 Clicking Game</title>
+  <style>
+    canvas {
+        border:1px solid #d3d3d3;
+        background-color: #f1f1f1;
+    }
+  </style>
+  <link rel="stylesheet" href="game.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body onload="myGameArea.start()">
+  <script>
+
+  var object;
+  var score = 0;
+  var canvas_context;
+
+  function counting_back()
+  {
+    document.getElementById("game_over").innerText="";
+    alert("Game Starts in 3 seconds")
+    for (var i = 3; i > 0; i--) {
+      setTimeout(alert(i),1000);
+    }
+    startGame();
+  }
+
+  function startGame() {
+      score = 0;
+      myGameArea.start();
+      walls();
+      object = new component(75,75,"red",random_position_x(),random_position_y());
+
+  }
+
+  function clickHandler(event)
+  {
+    x = event.clientX-myGameArea.canvas.offsetLeft;
+    y = event.clientY-myGameArea.canvas.offsetTop;
+
+    check_target(x,y);
+    myGameArea.update();
+  }
+
+  function check_target()
+  {
+    if(x >= object.x && x <= object.x + 75 && y >= object.y && y <= object.y + 75)
+    {
+      score++;
+      canvas_context.clearRect(object.x, object.y, 75, 75);
+      //console.log(score);
+      object = new component(75,75,"red",random_position_x(),random_position_y());
+    }
+    else{
+      game_over();
+    }
+  }
+
+  var myGameArea = {
+      canvas : document.createElement("canvas"),
+      start : function() {
+          this.canvas.width = 525;
+          this.canvas.height = 525;
+          this.canvas.style.margin="auto";
+          this.canvas.style.display="block";
+          this.context = this.canvas.getContext("2d");
+          canvas_context = this.context;
+          document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+          this.canvas.addEventListener("click",clickHandler,event);
+          myGameArea.update();
+      },
+      update : function(){
+        document.getElementById("score").innerText="Score: " + score;
+        console.log(score);
+      }
+  }
+
+  function walls()
+  {
+    this.rows = 7;
+    this.coloumns = 7;
+    this.maze = [1,1,1,1,1,1,1,
+                 1,0,0,0,0,0,1,
+                 1,0,0,0,0,0,1,
+                 1,0,0,0,0,0,1,
+                 1,0,0,0,0,0,1,
+                 1,0,0,0,0,0,1,
+                 1,1,1,1,1,1,1,];
+
+    this.bx = 0
+    this.by = 0
+    for (var i = 0; i < this.rows*this.coloumns; i++)
+    {
+      if (this.maze[ this.bx + (this.by*this.rows) ] == 1)
+      {
+        new component(75, 75, "black", this.bx, this.by);
+      }
+
+      this.bx = this.bx + 1
+      if (this.bx > self.rows-1)
+      {
+          this.bx = 0;
+          this.by = this.by + 1;
+      }
+    }
+  }
+
+  function component(width, height, color, x, y) {
+      this.width = width;
+      this.height = height;
+      this.x = x*75;
+      this.y = y*75;
+      ctx = myGameArea.context;
+      ctx.fillStyle = color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+      this.clicked = function(){
+        this.fillStyle = blue;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+  }
+
+  function random_position_x()
+  {
+    this.x = Math.floor(Math.random() * 5) + 1;
+    return this.x;
+  }
+
+  function random_position_y()
+  {
+    this.y = Math.floor(Math.random() * 5) + 1;
+    return this.y
+  }
+
+  function game_over()
+  {
+      canvas_context = null;
+      document.getElementById("game_over").innerText="Game Over, press start to try again\nYour score was: " + score;
+      score = 0;
+  }
+
+  </script>
+
+  <p id="game_over"></p>
+  <p id="score">Score: 0</p>
+  <button class="buttons" type="button" onclick="counting_back()">Start</button>
+  <button class="buttons" type="button" onclick="alert('Highscore')">Highscore</button>
+  <button class="backbuttons" type="button" onclick="location.href='index.html'">Back</button>
+
+
+
+</body>
+</html>
+

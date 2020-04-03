@@ -58,7 +58,7 @@ function Login_Authentication(usern, passw, res)
 
 		if (user)
 		{
-			return res.status(200).sendFile(__dirname + '/index.html');
+			return res.status(200).sendFile(__dirname + '/game.html');
 		}
 
 		if (!user)
