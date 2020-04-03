@@ -104,7 +104,7 @@ app.route('/login')
  const password = req.body.pswd;
 
  Login_Authentication(nickname, password, req, res)
- console.log(session.user.username)
+
  //console.log(req.body);
  //res.send(req.body.nickname + " " + req.body.pswd);
  });
@@ -130,7 +130,7 @@ app.route("/about_us")
 
 app.route("/game")
  .get(function(req,res) {
- 	res.send("Hello " + JSON.stringify(req.session.user));
+ 	res.send("Hello " + JSON.stringify(req.session.user.username));
 	//res.sendFile(__dirname + "/game.html")
  });
 
