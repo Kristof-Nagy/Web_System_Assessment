@@ -9,8 +9,35 @@ var bodyParser = require('body-parser');
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+const mongoose = require("mongoose");
+const loginschema = require("./model/mongoose_chema");
 // DATABASE
 
+const MongoClient = require('mongodb').MongoClient;
+const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mong$
+//const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongod$
+const client = new MongoClient(logins_uri, { useNewUrlParser: true });
+
+mongoose.connect(client).catch(onrejected:(err) => { throw err; });
+
+const user = { username:"a", password: "a" };
+
+loginschema.save((error) => {
+	if (error)
+	{
+		console.log(error);
+	}
+	console.log("Saved 1 instance");
+}
+
+
+
+
+
+
+
+
+/*
 // Add Username & Password
 
 const MongoClient = require('mongodb').MongoClient;
@@ -72,7 +99,7 @@ function Add_Server_Username_Score(usern, score)
             });
         });
 }
-
+*/
 // END OF DATABASE
 
 
@@ -93,13 +120,13 @@ app.route('/login')
  const nickname = req.body.nickname;
  const password = req.body.pswd;
 
- if (Login_Validation(nickname, password) == true)
+ /*if (Login_Validation(nickname, password) == true)
  {
 	console.log("INSIDE");
  }
  else{
 	console.log("NOT INSIDE");
- }
+ }*/
 
 
 
@@ -117,7 +144,7 @@ app.route("/register")
   const nickname = req.body.nickname;
   const password = req.body.pswd;
 
-  Add_Server_Username_Password(nickname, password);
+  //Add_Server_Username_Password(nickname, password);
   //res.send(firstname + " " + lastname + " " + password);
  });
 
