@@ -66,7 +66,6 @@ function Login_Authentication(usern, passw, req, res)
 			//console.log("500");
         	}
 
-
 		if (user)
 		{
 			//console.log("200");
@@ -124,6 +123,9 @@ app.route("/about_us")
 
 app.route("/game")
  .get(function(req,res) {
+	res.render('form'); //if jade
+ 	// You should use one of line depending on type of frontend you are with
+ 	res.sendFile(__dirname + '/login.html'); //if html file is root directory
  	//res.send("Hello " + req.session.user.username);
 	res.sendFile(__dirname + "/game.html")
  });
