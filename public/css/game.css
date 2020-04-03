@@ -1,0 +1,48 @@
+#score {
+          text-align: center;
+          font-family: Consolas;
+          font-size: 30px;
+}
+
+#game_over {
+          text-align: center;
+          font-family: Consolas;
+          font-size: 30px;
+}
+
+.buttons{
+  background-color: #e77c64;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 30px;
+  text-decoration: none;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.buttons:hover{
+	background-color: #f38a72;
+}
+
+.backbuttons{
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 30px;
+  text-decoration: none;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.backbuttons:hover{
+	background-color: #45a049;
+}
+
