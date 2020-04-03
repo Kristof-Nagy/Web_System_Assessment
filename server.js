@@ -70,7 +70,7 @@ function Login_Authentication(usern, passw, req, res)
 		{
 			//console.log("200");
 			req.session.user = user;
-			return res.status(200).send();
+			res.redirect("/game");
 		}
 
 		if (!user)
@@ -95,13 +95,13 @@ app.use(express.static("public"));
 app.route('/login')
  .get(function(req, res) {
  res.sendFile(__dirname + "/login.html");
- })/*
+ })
  .post(urlencodedParser, function(req, res) {
  const nickname = req.body.nickname;
  const password = req.body.pswd;
 
  Login_Authentication(nickname, password, req, res)
- });*/
+ });
 
 app.route("/register")
  .get(function(req, res) {
@@ -133,12 +133,12 @@ app.route("/game")
  	const nickname = req.body.nickname;
 	const password = req.body.pswd;
 
-	Login_Authentication(nickname, password, req, res)
+	Login_Authentication(nickname, password, req, res);
  });
 
 app.route("/highscore")
  .get(function(req,res) {
- 	res.sendFile(__dirname + "/highscore.html")
+ 	res.sendFile(__dirname + "/highscore.html");
  });
 
 
