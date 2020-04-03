@@ -1,7 +1,9 @@
 // load the express package and create our app
 var express = require('express');
 var app     = express();
-var session = require("express-session");
+const session = require("express-session");
+const mongo_store = require("connect-mongo")(session);
+
 
 const PORT = process.env.PORT || 8080;
 // set the port based on environment (more on environments later)
@@ -14,7 +16,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const mongoose = require("mongoose");
 
 
-app.use(session({secret:"398zrhauwh4tliasdf", resave:false, saveUninitialized:true}));
+app.use(session({secret:"398zrhauwh4tliasdf", store: new MongoStore()));
 
 
 // DATABASE
@@ -133,7 +135,7 @@ app.route("/game")
 
 app.route("/highscore")
  .get(function(req,res) {
- res.sendFile(__dirname + "/highscore.html")
+ 	res.sendFile(__dirname + "/highscore.html")
  });
 
 
