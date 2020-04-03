@@ -25,9 +25,9 @@ const { Schema } = mongoose;
 const loginSchema = new Schema({
 	username: String,
 	password: String,
-});
+}, { collection: "Papa" });
 
-const User = mongoose.model("Anakin", loginSchema);
+const User = mongoose.model("Papa", loginSchema);
 
 const user = new User({ username:"a", password: "a" });
 
