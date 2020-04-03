@@ -29,7 +29,7 @@ const loginSchema = new Schema({
 
 const User = mongoose.model("User", loginSchema);
 
-const user = new Aser({ username:"a", password: "a" });
+const user = new User({ username:"a", password: "a" });
 
 user.save((error) => {
 	if (error)
