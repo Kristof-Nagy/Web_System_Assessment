@@ -41,8 +41,8 @@ user.save((error) => {
 });
 */
 
-
-User.findOne({username:"a", password:"a"}, function(error, user){
+function authent(usern, passw){
+User.findOne({username:usern, password:passw}, function(error, user){
 	if (error)
         {
 		console.log("500");
@@ -58,52 +58,11 @@ User.findOne({username:"a", password:"a"}, function(error, user){
         {
 		console.log("404");
         }
-
 })
+}
 
-User.findOne({username:"a", password:"ab"}, function(error, user){
-        if (error)
-        {
-                console.log("500");
-        }
-
-
-        if (user)
-        {
-                console.log("200");
-        }
-
-        if (!user)
-        {
-                console.log("404");
-        }
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+authent("a","a");
+authent("b","a");
 
 /*
 // Add Username & Password
