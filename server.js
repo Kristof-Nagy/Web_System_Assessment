@@ -94,19 +94,14 @@ app.get('/', function(req, res) {
 app.use(express.static("public"));
 
 app.route('/login')
- // show the form (GET http://localhost:PORT/login)
  .get(function(req, res) {
  res.sendFile(__dirname + "/login.html");
  })
- // process the form (POST http://localhost:PORT/login)
  .post(urlencodedParser, function(req, res) {
  const nickname = req.body.nickname;
  const password = req.body.pswd;
 
  Login_Authentication(nickname, password, req, res)
-
- //console.log(req.body);
- //res.send(req.body.nickname + " " + req.body.pswd);
  });
 
 app.route("/register")
@@ -120,7 +115,6 @@ app.route("/register")
   const password = req.body.pswd;
 
   Add_User(nickname, password, res);
-  //res.send(firstname + " " + lastname + " " + password);
  });
 
 app.route("/about_us")
@@ -130,8 +124,8 @@ app.route("/about_us")
 
 app.route("/game")
  .get(function(req,res) {
- 	res.send("Hello " + req.session.user.username);
-	//res.sendFile(__dirname + "/game.html")
+ 	//res.send("Hello " + req.session.user.username);
+	res.sendFile(__dirname + "/game.html")
  });
 
 app.route("/highscore")
