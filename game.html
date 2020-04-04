@@ -151,16 +151,16 @@
     var score;
     var username;
     const data = { username };
-    const options = {
-      method: "POST",
-      data:data,
-      headers: {
-        "Contet-Type":"application/json"
-      },
-      body: JSON.stringify(data)
-    }
+    //const options = {
+    //  method: "POST",
+    //  data:data,
+    //  headers: {
+    //    "Contet-Type":"application/json"
+    //  },
+    //  body: JSON.stringify(data)
+    //}
 
-    fetch("/users", options)
+    fetch("/users")
       .then(res => res.json())
       .then(data => console.log(data));
   }
