@@ -103,7 +103,7 @@ function Login_Authentication(usern, passw, req, res)
 		{
 			//console.log("200");
 			req.session.user = user;
-			return res.status(200).sendFile(__dirname + '/game.html');
+			return res.status(200).redirect('/game.html');
 		}
 
 		if (!user)
