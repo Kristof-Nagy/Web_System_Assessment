@@ -155,13 +155,13 @@
 
   function test()
   {
-      $(document).ready(function() {
+      $(document).ready(function(){
 	$("#test").click(function(){
-	  $.post("/game",
+	  $.post("game",
  	   {
  	   	nickname: "Donald Duck",
  	   	score: "Duckburg"
- 	      },
+ 	   },
  	   function(data){
  	   	alert("Data: " + data);
  	   });
