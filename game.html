@@ -152,7 +152,7 @@
 	console.log(data);
 	document.getElementById("greetings").innerText="Welcome " + data + "!";
   }
-
+  async function test(){
       $(document).ready(function(){
 	$("#test").click(function(){
 	  $.post("game",
@@ -165,7 +165,9 @@
  	   });
 	});
       });
+  }
   get_data();
+  test();
   </script>
   <div class="container">
   	<p id="game_over"></p>
