@@ -27,8 +27,10 @@ app.use(session({secret:"398zrhauwh4tliasdf", cookie: { maxAge: 1000 * 60 * 60 *
 
 const MongoClient = require('mongodb').MongoClient;
 const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Logins?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
-//const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongod$
+const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Game?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
 const client = new MongoClient(logins_uri, { useNewUrlParser: true });
+const gane_client = new MongoClient(game_uri, { useNewUrlParser: true });
+
 
 mongoose.connect(logins_uri, { useNewUrlParser: true });
 
@@ -40,7 +42,6 @@ const loginSchema = new Schema({
 }, { collection: "Users" });
 
 const User = mongoose.model("Users", loginSchema);
-
 
 function Find_User(usern, res)
 {
@@ -103,6 +104,29 @@ function Login_Authentication(usern, passw, req, res)
 	})
 }
 
+function Add_Score (nickn, sc, res)
+{
+	mongoose.connect(logins_uri, { useNewUrlParser: true });
+
+	const gameSchema = new Schema({
+		nickname: String,
+		score: String,
+	}, { collection: "Score" });
+
+	const Game = mongoose.model("Score", gameSchema);
+
+	const game_score = new Game({ nickname:nickn, score:sc });
+	game_score.save((error) => {
+		if (error)
+		{
+			console.log(error);
+		}
+		console.log("Saved 1 instance to database");
+		return res.status(200).sendFile(__dirname + "/game.html");
+	});
+
+}
+
 
 // END OF DATABASE
 
@@ -146,11 +170,7 @@ app.route("/about_us")
 app.route("/game")
  .get(function(req,res) {
 	res.sendFile(__dirname + "/game.html")
- });/*
- .post(function(req,res) {
-	console.log(req.session.user.username);
-	Find_User(req.session.user.username, res);
- });*/
+ });
 
 app.route("/highscore")
  .get(function(req,res) {
@@ -168,6 +188,14 @@ app.route("/logout")
 	req.session.user = null;
 	console.log(req.session.user);
 	res.redirect('/');
+ });
+
+app.route("/test")
+ .post(function(req,res){
+	const nickname = "valaki";
+	const score = "1";
+
+	Add_Score(nickname, score, res);
  });
 
 // start the server

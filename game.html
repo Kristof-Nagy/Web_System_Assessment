@@ -142,6 +142,7 @@
       canvas_context = null;
       document.getElementById("game_over").innerText="Game Over, press start to try again\nYour score was: " + score;
       score = 0;
+      test();
   }
 
   async function get_data() //first_name, last_name, score
@@ -150,6 +151,11 @@
 	const data = await response.json();
 	console.log(data);
 	document.getElementById("greetings").innerText="Welcome " + data + "!";
+  }
+
+  function test()
+  {
+	window.location.href = "/test";
   }
 
   get_data();
