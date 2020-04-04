@@ -146,7 +146,7 @@ app.route("/about_us")
 app.route("/game")
  .get(function(req,res) {
 	res.sendFile(__dirname + "/game.html")
- })/*
+ });/*
  .post(function(req,res) {
 	console.log(req.session.user.username);
 	Find_User(req.session.user.username, res);
