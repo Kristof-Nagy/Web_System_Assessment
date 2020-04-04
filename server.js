@@ -165,9 +165,7 @@ app.route("/user")
 
 app.route("/logout")
  .get(function(req, res){
-	req.session.destory(function(err){
-		//session destroyed
-	});
+	req.session.user = null;
 	console.log(req.session.user);
 	res.redirect('/');
  });
