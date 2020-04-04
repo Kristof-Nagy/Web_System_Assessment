@@ -160,7 +160,7 @@ app.route("/highscore")
 app.route("/user")
  .get(function(req,res) {
 	res.json({ test:"1234" })
-}
+ });
 // start the server
 app.listen(PORT, function(){
  console.log('Express Server running at http://127.0.0.1:'.PORT);
