@@ -122,7 +122,7 @@ function Add_Score (nickn, sc, res)
 			console.log(error);
 		}
 		console.log("Saved 1 instance to database");
-		return res.status(200).sendFile(__dirname + "/game.html");
+		return res.status(200);
 	});
 
 }
@@ -170,6 +170,12 @@ app.route("/about_us")
 app.route("/game")
  .get(function(req,res) {
 	res.sendFile(__dirname + "/game.html")
+ })
+ .post(function(req,res){
+	const nickname = "valaki";
+	const score = "1";
+
+	Add_Score(nickname, score, res);
  });
 
 app.route("/highscore")

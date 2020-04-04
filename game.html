@@ -155,7 +155,16 @@
 
   function test()
   {
-	window.location.href = "/test";
+	$(#test).click(function(){
+	  $.post("/game",
+ 	   {
+ 	   	nickname: "Donald Duck",
+ 	   	score: "Duckburg"
+ 	      },
+ 	   function(data){
+ 	   	alert("Data: " + data);
+ 	   });
+	});
   }
 
   get_data();
@@ -167,6 +176,7 @@
   	<button class="buttons" type="button" onclick="counting_back()">Start</button>
   	<a class="buttons" href="/highscore">Higscore</a>  
   	<a class="backbuttons" href="/logout">Log Out</a>
+  	<a class="backbuttons" id="test">TEST</a>
   </div>
 </body>
 </html>
