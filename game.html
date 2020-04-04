@@ -160,13 +160,8 @@
     //  body: JSON.stringify(data)
     //}
 
-    fetch("/game", {
-	headers: {
-		"Content-Type": "application/json",
-		"Accept": "application/json"
-	}
-	})
-      .then(res => res.json())
+    fetch("/game")
+      .then(res => res.text())
       .then(data => console.log(data));
   }
 
