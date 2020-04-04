@@ -149,6 +149,7 @@
 	const response = await fetch("/user");
 	const data = await response.json();
 	console.log(data);
+	document.getElementById("greetings").innerText="Welcome " + data + "!";
   }
   get_data();
   </script>
