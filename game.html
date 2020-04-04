@@ -149,6 +149,7 @@
     var firstname;
     var lastname;
     var score;
+    var username;
     const data = { username };
     const options = {
       method: "POST",
@@ -159,7 +160,7 @@
       body: JSON.stringify(data)
     }
 
-    fetch("/users", )
+    fetch("/users", options)
       .then(res => res.json())
       .then(data => console.log(data));
   }
