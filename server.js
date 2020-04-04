@@ -106,7 +106,7 @@ function Login_Authentication(usern, passw, req, res)
 
 function Add_Score (nickn, sc, res)
 {
-	mongoose.connect(logins_uri, { useNewUrlParser: true });
+	mongoose.connect(game_uri, { useNewUrlParser: true });
 
 	const gameSchema = new Schema({
 		nickname: String,
@@ -201,8 +201,8 @@ app.route("/test")
 	const nickname = "valaki";
 	const score = "1";
 
-	//Add_Score(nickname, score, res);
-	res.status(200).send(nickname + " " + score);
+	Add_Score(nickname, score, res);
+	//res.status(200).send(nickname + " " + score);
  });
 
 // start the server
