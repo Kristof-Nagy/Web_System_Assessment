@@ -154,7 +154,6 @@
   }
   async function test(){
       $(document).ready(function(){
-	$("#test").click(function(){
 	  $.post("game",
  	   {
  	   	nickname: "Donald Duck",
@@ -163,7 +162,6 @@
  	   function(data){
  	   	alert("Data: " + data);
  	   });
-	});
       });
   }
   get_data();
@@ -176,7 +174,7 @@
   	<button class="buttons" type="button" onclick="counting_back()">Start</button>
   	<a class="buttons" href="/highscore">Higscore</a>  
   	<a class="backbuttons" href="/logout">Log Out</a>
-  	<button class="backbuttons" id="test">TEST</button>
+  	<button class="backbuttons" id="test" onclick="test()">TEST</button>
   </div>
 </body>
 </html>
