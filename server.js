@@ -92,6 +92,7 @@ function Add_User(usern, passw, res)
 function Login_Authentication(usern, passw, req, res)
 {
 	User.findOne({username:usern, password:passw}, function(error, user){
+		console.log(user);
 		if (error)
         	{
 			return res.status(500).send();
