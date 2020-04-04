@@ -165,7 +165,8 @@ app.route("/user")
 
 app.route("/logout")
  .get(function(req, res){
-	res.json( {destroy:"session will be destroyed"}).sendFile(__dirname + '/game.html');
+	//res.json( {destroy:"session will be destroyed"})
+        res.redirect('/game.html');
  });
 
 // start the server
