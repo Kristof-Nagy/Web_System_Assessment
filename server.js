@@ -165,7 +165,7 @@ app.route("/register")
 
 app.route("/success")
  .get(function(req,res){
-   res.redirect("/game.html").;
+   res.redirect("/game.html");
  })
 
 app.route("/about_us")
