@@ -153,17 +153,18 @@
 	document.getElementById("greetings").innerText="Welcome " + data + "!";
   }
   
-  function test(){
-	$.ajax({
+  async function test(){
+	$( document ).ready(function() {
+	   $.ajax({
 	       type: 'POST',
 	       url: "/game",
 	       contentType: 'application/json',
 	       data: {"id" : "10"},
 	       cache: false,
-	       async: false,
 	       success: function (result) { console.log(result); }
-	});      
-  }
+		});
+	});    
+  }  
   get_data();
   </script>
   <div class="container">
