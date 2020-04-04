@@ -165,8 +165,7 @@ app.route("/user")
 
 app.route("/logout")
  .get(function(req, res){
-	//res.json( {destroy:"session will be destroyed"})
-        res.redirect('/');
+	res.console.log("will be killed").redirect('/');
  });
 
 // start the server
