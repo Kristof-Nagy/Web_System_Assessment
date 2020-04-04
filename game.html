@@ -144,13 +144,36 @@
       score = 0;
   }
 
+  function get_data() //first_name, last_name, score
+  {
+    var firstname;
+    var lastname;
+    var score;
+    const data = { username };
+    const options = {
+      method: "POST",
+      data:data,
+      headers: {
+        "Contet-Type":"application/json"
+      },
+      body: JSON.stringify(data)
+    }
+
+    }
+    fetch("/users", )
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }
+
   </script>
   <div class="container">
   	<p id="game_over"></p>
+	<p>Welcome, </p>
   	<p id="score">Score: 0</p>
   	<button class="buttons" type="button" onclick="counting_back()">Start</button>
   	<a class="buttons" href="/highscore">Higscore</a>  
   	<a class="backbuttons" href="/">Log Out</a>
+  	<button class="buttons" type="button" onclick="get_data()">TEST</a>
   </div>
 </body>
 </html>

@@ -42,6 +42,28 @@ const loginSchema = new Schema({
 const User = mongoose.model("Users", loginSchema);
 
 
+function Find_User(usern, res)
+{
+	User.findOne({username:usern, password:passw}, function(error, user){
+		if (error)
+        	{
+			return res.status(500).send();
+			//console.log("500");
+        	}
+
+		if (user)
+		{
+			//console.log("200");
+			return res.json(user));
+		}
+
+		if (!user)
+	        {
+			return res.status(404).send("Username or password is wrong!");
+			//console.log("404");
+	        }
+	})
+}
 
 
 function Add_User(usern, passw, res)
@@ -75,7 +97,7 @@ function Login_Authentication(usern, passw, req, res)
 
 		if (!user)
 	        {
-			return res.status(404).send();
+			return res.status(404).send("Username or password is wrong!");
 			//console.log("404");
 	        }
 	})
@@ -131,11 +153,16 @@ app.route("/highscore")
  	res.sendFile(__dirname + "/highscore.html");
  });
 
+app.route("/user")
+ .post(function(req,res) {
+	Find_User(session.username, res);
+ });
 
 // start the server
 app.listen(PORT, function(){
  console.log('Express Server running at http://127.0.0.1:'.PORT);
 });
+
 
 /*
 
