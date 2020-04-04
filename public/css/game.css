@@ -4,6 +4,13 @@
           font-size: 30px;
 }
 
+#greetings {
+          text-align: center;
+          font-family: Consolas;
+          font-size: 30px;
+}
+
+
 #game_over {
           text-align: center;
           font-family: Consolas;
