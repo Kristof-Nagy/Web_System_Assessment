@@ -149,7 +149,11 @@ app.route('/login')
   const nickname = req.body.nickname;
   const password = req.body.pswd;
 
- Login_Authentication(nickname, password, req, res)
+ if(Login_Authentication(nickname, password, req, res))
+ {
+	res.redirect("/game");
+
+ }
  });
 
 app.route("/register")
@@ -183,10 +187,7 @@ app.route("/game")
 	const nickname = "valaki";
 	const score = "1";
 
-	if(Add_Score(nickname, score, res))
-	{
-		res.redirect("/game");
-	}
+	Add_Score(nickname, score, res);
  });
 
 app.route("/highscore")
