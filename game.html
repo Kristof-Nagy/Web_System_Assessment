@@ -155,6 +155,7 @@
 
   function test()
   {
+      $(document).ready(function() {
 	$("#test").click(function(){
 	  $.post("/game",
  	   {
@@ -164,7 +165,8 @@
  	   function(data){
  	   	alert("Data: " + data);
  	   });
-	});
+	})
+      });
   }
 
   get_data();
