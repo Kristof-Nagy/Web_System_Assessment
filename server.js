@@ -104,7 +104,7 @@ function Login_Authentication(usern, passw, req, res)
 		{
 			console.log("200");
 			req.session.user = user;
-			return true;
+			return res.redirect("/game");
 		}
 
 		if (!user)
@@ -149,11 +149,7 @@ app.route('/login')
   const nickname = req.body.nickname;
   const password = req.body.pswd;
 
- if(Login_Authentication(nickname, password, req, res))
- {
-	res.redirect("/game");
-
- }
+  Login_Authentication(nickname, password, req, res);
  });
 
 app.route("/register")
