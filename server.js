@@ -183,7 +183,7 @@ app.route("/game")
 	const nickname = "valaki";
 	const score = "1";
 
-	if(Add_Score(nickname, score, res)
+	if(Add_Score(nickname, score, res))
 	{
 		res.redirect("/game");
 	}
