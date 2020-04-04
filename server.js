@@ -103,7 +103,7 @@ function Login_Authentication(usern, passw, req, res)
 		{
 			//console.log("200");
 			req.session.user = user;
-			return res.status(200).redirect('/game.html');
+			return res.status(200).redirect('/success');
 		}
 
 		if (!user)
@@ -141,31 +141,36 @@ app.use(express.static("public"));
 
 app.route('/login')
  .get(function(req, res) {
- res.sendFile(__dirname + "/login.html");
+  res.sendFile(__dirname + "/login.html");
  })
  .post(urlencodedParser, function(req, res) {
- const nickname = req.body.nickname;
- const password = req.body.pswd;
+  const nickname = req.body.nickname;
+  const password = req.body.pswd;
 
  Login_Authentication(nickname, password, req, res)
  });
 
 app.route("/register")
  .get(function(req, res) {
-  res.sendFile(__dirname + "/register.html");
+   res.sendFile(__dirname + "/register.html");
  })
  .post(urlencodedParser, function(req, res) {
-  const firstname = req.body.firstname;
-  const lastname = req.body.lastname;
-  const nickname = req.body.nickname;
-  const password = req.body.pswd;
+   const firstname = req.body.firstname;
+   const lastname = req.body.lastname;
+   const nickname = req.body.nickname;
+   const password = req.body.pswd;
 
   Add_User(nickname, password, res);
  });
 
+app.route("/success")
+ .get(function(req,res){
+   res.redirect("/game.html").;
+ })
+
 app.route("/about_us")
  .get(function(req, res) {
- res.sendFile(__dirname + "/about_us.html")
+   res.sendFile(__dirname + "/about_us.html")
  });
 
 app.route("/game")
