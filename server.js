@@ -146,11 +146,11 @@ app.route("/about_us")
 app.route("/game")
  .get(function(req,res) {
 	res.sendFile(__dirname + "/game.html")
- })
+ })/*
  .post(function(req,res) {
 	console.log(req.session.user.username);
 	Find_User(req.session.user.username, res);
- });
+ });*/
 
 app.route("/highscore")
  .get(function(req,res) {
@@ -158,7 +158,9 @@ app.route("/highscore")
  });
 
 app.route("/user")
-
+ .get(function(req,res) {
+	res.json({ test:"1234" })
+}
 // start the server
 app.listen(PORT, function(){
  console.log('Express Server running at http://127.0.0.1:'.PORT);

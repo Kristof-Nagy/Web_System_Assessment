@@ -144,25 +144,11 @@
       score = 0;
   }
 
-  function get_data() //first_name, last_name, score
+  async function get_data() //first_name, last_name, score
   {
-    var firstname;
-    var lastname;
-    var score;
-    var username;
-    const data = { username };
-    //const options = {
-    //  method: "POST",
-    //  data:data,
-    //  headers: {
-    //    "Contet-Type":"application/json"
-    //  },
-    //  body: JSON.stringify(data)
-    //}
-
-    fetch("/game")
-      .then(res => res.text())
-      .then(data => console.log(data));
+	const response = await fetch("/user");
+	const data = await response.json();
+	console.log(data);
   }
 
   </script>
