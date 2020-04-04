@@ -201,7 +201,8 @@ app.route("/test")
 	const nickname = "valaki";
 	const score = "1";
 
-	Add_Score(nickname, score, res);
+	//Add_Score(nickname, score, res);
+	res.status(200).send(nickname + " " + score);
  });
 
 // start the server
