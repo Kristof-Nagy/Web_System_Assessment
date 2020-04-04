@@ -162,6 +162,13 @@ app.route("/user")
 	//res.json(Find_User(req.session.user.username))
 	res.json( req.session.user.username )
  });
+
+app.route("/logout")
+ .get(function(req, res){
+	res.json( destroy:"session will be destroyed");
+	sendFile(__dirname + '/game.html');
+ });
+
 // start the server
 app.listen(PORT, function(){
  console.log('Express Server running at http://127.0.0.1:'.PORT);
