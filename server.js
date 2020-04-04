@@ -155,7 +155,8 @@ app.route("/highscore")
 
 app.route("/user")
  .post(function(req,res) {
-	Find_User(session.user.username, res);
+	console.log(req.session.user.username);
+	Find_User(req.session.user.username, res);
  });
 
 // start the server
