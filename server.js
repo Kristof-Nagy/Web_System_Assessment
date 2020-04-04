@@ -202,7 +202,7 @@ app.route("/test")
 	const score = "1";
 
 	//Add_Score(nickname, score, res);
-	res.status(200).send("ok");
+	res.json(200, { nick:nickname, sc:score });
 	//res.status(200).send(nickname + " " + score);
  });
 
