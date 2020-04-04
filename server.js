@@ -159,7 +159,8 @@ app.route("/highscore")
 
 app.route("/user")
  .get(function(req,res) {
-	res.json({ test:"1234" })
+	//res.json(Find_User(req.session.user.username))
+	res.json( req.session.user )
  });
 // start the server
 app.listen(PORT, function(){
