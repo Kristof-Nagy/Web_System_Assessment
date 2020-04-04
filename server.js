@@ -197,7 +197,7 @@ app.route("/logout")
  });
 
 app.route("/test")
- .get(function(req,res){
+ .post(function(req,res){
 	const nickname = "valaki";
 	const score = "1";
 
