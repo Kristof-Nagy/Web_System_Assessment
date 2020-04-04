@@ -95,21 +95,23 @@ function Login_Authentication(usern, passw, req, res)
 		console.log(user);
 		if (error)
         	{
-			return res.status(500).send();
-			//console.log("500");
+			//return res.status(500).send();
+			console.log("500");
+			return false;
         	}
 
 		if (user)
 		{
-			//console.log("200");
+			console.log("200");
 			req.session.user = user;
-			return res.status(200).redirect('/success');
+			return true;
 		}
 
 		if (!user)
 	        {
-			return res.status(404).send("Username or password is wrong!");
-			//console.log("404");
+			//return res.status(404).send("Username or password is wrong!");
+			console.log("404");
+			return false;
 	        }
 	})
 }
@@ -181,7 +183,10 @@ app.route("/game")
 	const nickname = "valaki";
 	const score = "1";
 
-	Add_Score(nickname, score, res);
+	if(Add_Score(nickname, score, res)
+	{
+		res.redirect("/game");
+	}
  });
 
 app.route("/highscore")
