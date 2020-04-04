@@ -165,7 +165,9 @@ app.route("/user")
 
 app.route("/logout")
  .get(function(req, res){
-	res.console.log("will be killed").redirect('/');
+	req.session.user.destory();
+	console.log(req.session.user);
+	res.redirect('/');
  });
 
 // start the server
