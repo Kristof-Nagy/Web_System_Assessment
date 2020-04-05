@@ -200,7 +200,7 @@ app.route("/logout")
  });
 
 app.route("/score")
- .post(function(req,res){
+ .post(function(urlencodedParser,req,res){
 	console.log(req.body);
 	//const nickname = req.body.nickname;
 	//const score = req.body.score;
