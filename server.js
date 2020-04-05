@@ -119,6 +119,7 @@ function Add_Score (nickname, score, res)
 		if (error)
 		{
 			console.log(error);
+			return res.status(500);
 		}
 		console.log("Saved 1 instance to database");
 		return res.status(200);
@@ -195,8 +196,6 @@ app.route("/score")
 	const score = req.body.score;
 
 	Add_Score(nickname, score, res);
-	//res.json( { nickname:nickname, score:score } );
-	//res.status(200).send(nickname + " " + score);
  });
 
 // start the server
