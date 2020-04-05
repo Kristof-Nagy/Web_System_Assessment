@@ -155,7 +155,7 @@
   
   async function post_score() //first_name, last_name, score
       {
-         const data = { username:"szemet", score"15"};
+         var data = { username:"szemet", score"15" };
          const response = await fetch("/score", {
            method: "post",
            headers: {
