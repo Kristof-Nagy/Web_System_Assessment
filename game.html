@@ -153,21 +153,6 @@
 	document.getElementById("greetings").innerText="Welcome " + data + "!";
   }
 
-  /*$(document).ready(function(){
-  	$("#test").click(function(){
- 	   $.post("score",
- 	   {
- 	     nickname: usern,
- 	     score: score
- 	   },
- 	   function(data,status){
- 	     alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
- 	   },
- 	   "json");
- 	 });
-  });  
-  */
-
   function add_score_to_db()
   {
 	$.post("score",
@@ -190,7 +175,6 @@
   	<button class="buttons" type="button" onclick="counting_back()">Start</button>
   	<a class="buttons" href="/highscore">Higscore</a>  
   	<a class="backbuttons" href="/logout">Log Out</a>
-  	<button class="backbuttons" id="test">TEST</button>
   </div>
 </body>
 </html>
