@@ -154,23 +154,14 @@
   }
 $(document).ready(function(){
   $("#test").click(function(){
-	$.ajax({
-	  type: "POST",
-	  url: "score",
-	  data: { a:"1"},
-	  success: function(msg){
-	  	{ alert(msg) }
-	  },
-	  dataType: json
-	});
-    /*$.post("score",
+    $.post("score",
     {
       name: "Donald Duck",
       city: "Duckburg"
     },
     function(data,status){
       alert("Data: " + data + "\nStatus: " + status);
-    });*/
+    });
   });
 });  
 
