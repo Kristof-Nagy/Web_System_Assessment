@@ -21,7 +21,7 @@ var store = new MongoDBStore({
 
 
 app.use(session({secret:"398zrhauwh4tliasdf", cookie: { maxAge: 1000 * 60 * 60 * 24}, store: store, resave:false, saveUninitialized:true}));
-
+app.disable('etag');
 
 // DATABASE
 
