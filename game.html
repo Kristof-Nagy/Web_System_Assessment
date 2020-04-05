@@ -142,7 +142,7 @@
   {
       canvas_context = null;
       document.getElementById("game_over").innerText="Game Over, press start to try again\nYour score was: " + score;
-      test();
+      add_score_to_db();
   }
 
   async function get_data() //nickname
@@ -153,7 +153,7 @@
 	document.getElementById("greetings").innerText="Welcome " + data + "!";
   }
 
-  $(document).ready(function(){
+  /*$(document).ready(function(){
   	$("#test").click(function(){
  	   $.post("score",
  	   {
@@ -166,7 +166,22 @@
  	   "json");
  	 });
   });  
-  
+  */
+
+  function add_score_to_db()
+  {
+	$.post("score",
+ 	   {
+ 	     nickname: usern,
+ 	     score: score
+ 	   },
+ 	   function(data,status){
+ 	     alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+ 	   },
+ 	   "json");
+ 	 });
+  }
+
   get_data();
   </script>
   <div class="container">
