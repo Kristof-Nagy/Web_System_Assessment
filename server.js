@@ -106,7 +106,7 @@ function Order_By_Score(res)
 			return res.status(500).end();
 		}
 		console.log(result);
-		return res.status(200).end();
+		return res.status(200).json(result);
 		//return res.status(200).json( result )
 	});
 }
