@@ -95,9 +95,9 @@ function Login_Authentication(usern, passw, req, res)
 		console.log(user);
 		if (error)
         	{
-			//return res.status(500).send();
+			return res.status(500).send();
 			console.log("500");
-			return false;
+			//return false;
         	}
 
 		if (user)
@@ -109,9 +109,9 @@ function Login_Authentication(usern, passw, req, res)
 
 		if (!user)
 	        {
-			//return res.status(404).send("Username or password is wrong!");
+			return res.status(404).send("Username or password is wrong!");
 			console.log("404");
-			return false;
+			//return false;
 	        }
 	})
 }
