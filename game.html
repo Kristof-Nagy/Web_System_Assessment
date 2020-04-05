@@ -145,7 +145,7 @@
       test();
   }
 
-  async function get_data() //first_name, last_name, score
+  async function get_data() //nickname
   {
 	const response = await fetch("/user");
 	const data = await response.json();
@@ -153,18 +153,20 @@
 	document.getElementById("greetings").innerText="Welcome " + data + "!";
   }
   
-  async function test(){
-	$( document ).ready(function() {
-	   $.ajax({
-	       type: 'POST',
-	       url: "/game",
-	       contentType: 'application/json',
-	       data: {"id" : "10"},
-	       cache: false,
-	       success: function (result) { console.log(result); }
-		});
-	});    
-  }
+  async function get_data() //first_name, last_name, score
+      {
+         const data = { username:"szemet", score"15"};
+         const response = await fetch("/score", {
+           method: "post",
+           headers: {
+              'Content-Type': 'application/json'
+           },
+           body: JSON.stringify(data)
+         });
+         const result = response.json();
+  	     alert(result);
+      }
+  
   
   get_data();
   </script>

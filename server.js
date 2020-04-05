@@ -165,11 +165,6 @@ app.route("/register")
   Add_User(nickname, password, res);
  });
 
-app.route("/success")
- .get(function(req,res){
-   res.redirect("/game.html");
- })
-
 app.route("/about_us")
  .get(function(req, res) {
    res.sendFile(__dirname + "/about_us.html")
@@ -204,7 +199,7 @@ app.route("/logout")
 	res.redirect('/');
  });
 
-app.route("/test")
+app.route("/score")
  .post(function(req,res){
 	const nickname = "valaki";
 	const score = "1";
