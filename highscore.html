@@ -7,6 +7,20 @@
 </head>
 <body>
 
+	<script type="text/javascript">
+
+
+	async function get_data() //nickname
+	{
+			const response = await fetch("/all_scores_ordered");
+			const data = await response.json();
+			usern = data;
+			alert(data);
+	}
+
+
+	</script>
+
 	<p class="title">Highscore</p>
 	<div class="container">
 

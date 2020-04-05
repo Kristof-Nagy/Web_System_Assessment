@@ -159,8 +159,12 @@ app.route("/game")
 
 app.route("/highscore")
  .get(function(req,res) {
-	Order_By_Score(res);
  	res.sendFile(__dirname + "/highscore.html");
+ });
+
+app.route("/all_scores_ordered")
+ .get(function(req,res){
+	Order_By_Score(res);
  });
 
 app.route("/user")
