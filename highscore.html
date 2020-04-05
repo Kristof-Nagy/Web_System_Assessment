@@ -25,42 +25,54 @@
 
 					<table class="container">
 						<thead>
-							<tr class="table100-head">
-								<th class="column3">Position</th>
-								<th class="column1">Nickname</th>
-								<th class="column2">Highscore</th>
+<tr class="table100-head">
+								<th id="h1r1">Position</th>
+								<th id="h1r2">Nickname</th>
+								<th id="h1r3">Highscore</th>
 							</tr>
 						</thead>
 						<tbody>
 								<tr>
-									<td class="column1">1</td>
-									<td class="column2">Krumpli</td>
-									<td class="column3">30</td>
+									<td id="c1r1">1</td>
+									<td class="trow"></td>
+									<td class="trow"></td>
 								</tr>
 								<tr>
-									<td class="column1">2</td>
-									<td class="column2">Sült</td>
-									<td class="column3">30</td>
+									<td id="c2r1">2</td>
+									<td class="trow"></td>
+									<td class="trow"></td>
 								</tr>
 								<tr>
-									<td class="column1">3</td>
-									<td class="column2">Csíkos</td>
-									<td class="column3">30</td>
+									<td id="c3r1">3</td>
+									<td class="trow"></td>
+									<td class="trow"></td>
 								</tr>
 								<tr>
-									<td class="column1">4</td>
-									<td class="column2">Makk</td>
-									<td class="column3">30</td>
+									<td id="c4r1">4</td>
+									<td class="trow"></td>
+									<td class="trow"></td>
 								</tr>
 								<tr>
-									<td class="column1">5</td>
-									<td class="column2">Pulya</td>
-									<td class="column3">30</td>
+									<td id="c5r1">5</td>
+									<td class="trow"></td>
+									<td class="trow"></td>
 								</tr>
 						</tbody>
 					</table>
 					<a class="buttons" href="/game">Back</a>
 	</div>
+
+		<script type="text/javascript">
+
+		var list_of_rows = document.getElementsByClassName("trow");
+		var j = 0;
+		for (var i = 0; i < list_of_rows.length; i++) {
+			list_of_rows[i].innerHTML = data6[j].nickname;
+			i++
+			list_of_rows[i].innerHTML = data6[j].score;
+			j++;
+		}
+		
+		</script>
 </body>
 </html>
-
