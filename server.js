@@ -43,7 +43,7 @@ const User = mongoose.model("Users", loginSchema);
 
 const gameSchema = new Schema({
 	nickname: String,
-	score: String,
+	score: Number,
 }, { collection: "Score" });
 
 const Game = mongoose.model("Score", gameSchema);
@@ -99,6 +99,19 @@ function Add_Score (nickname, score, res)
 
 }
 
+function Order_By_Score(res)
+{
+	Game.find({}).sort("-score", function(err, result){
+		if(err){
+			return res.status(500).end();
+		}
+		console.log(result);
+		return res.status(200).end();
+		//return res.status(200).json( result )
+	});
+}
+
+
 
 // END OF DATABASE
 
@@ -146,6 +159,7 @@ app.route("/game")
 
 app.route("/highscore")
  .get(function(req,res) {
+	Order_By_Score(res);
  	res.sendFile(__dirname + "/highscore.html");
  });
 
