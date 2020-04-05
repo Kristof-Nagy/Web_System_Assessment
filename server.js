@@ -27,8 +27,6 @@ app.disable('etag');
 
 const MongoClient = require('mongodb').MongoClient;
 const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Game?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
-const client = new MongoClient(logins_uri, { useNewUrlParser: true });
-const game_client = new MongoClient(game_uri, { useNewUrlParser: true });
 
 mongoose.connect(game_uri, { useNewUrlParser: true });
 
