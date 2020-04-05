@@ -116,9 +116,9 @@ function Login_Authentication(usern, passw, req, res)
 	})
 }
 
-function Add_Score (nickn, sc, res)
+function Add_Score (nickname, score, res)
 {
-	const game_score = new Game({ nickname:nickn, score:sc });
+	const game_score = new Game({ nickname:nickname, score:score });
 	game_score.save((error) => {
 		if (error)
 		{
@@ -198,8 +198,8 @@ app.route("/score")
 	const nickname = req.body.nickname;
 	const score = req.body.score;
 
-	//Add_Score(nickname, score, res);
-	res.json( { nickname:nickname, score:score } );
+	Add_Score(nickname, score, res);
+	//res.json( { nickname:nickname, score:score } );
 	//res.status(200).send(nickname + " " + score);
  });
 
