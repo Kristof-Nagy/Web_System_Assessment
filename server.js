@@ -195,12 +195,11 @@ app.route("/logout")
 
 app.route("/score")
  .post(urlencodedParser,function(req,res){
-	console.log(req.body);
-	//const nickname = req.body.nickname;
-	//const score = req.body.score;
+	const nickname = req.body.nickname;
+	const score = req.body.score;
 
 	//Add_Score(nickname, score, res);
-	res.json( { nickname:"nickname", score:"1" } );
+	res.json( { nickname:nickname, score:score } );
 	//res.status(200).send(nickname + " " + score);
  });
 
