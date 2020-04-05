@@ -201,11 +201,12 @@ app.route("/logout")
 
 app.route("/score")
  .post(function(req,res){
-	const nickname = req.body.nickname;
-	const score = req.body.score;
+	console.log(req.body);
+	//const nickname = req.body.nickname;
+	//const score = req.body.score;
 
 	//Add_Score(nickname, score, res);
-	res.json( { nickname:nickname, score:score } );
+	res.json( { nickname:"nickname", score:"1" } );
 	//res.status(200).send(nickname + " " + score);
  });
 
