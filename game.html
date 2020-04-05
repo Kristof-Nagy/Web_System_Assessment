@@ -20,6 +20,7 @@
   var object;
   var score = 0;
   var canvas_context;
+  var usern;
 
   function counting_back()
   {
@@ -149,50 +150,23 @@
   {
 	const response = await fetch("/user");
 	const data = await response.json();
-	console.log(data);
+	usern = data;
 	document.getElementById("greetings").innerText="Welcome " + data + "!";
   }
-$(document).ready(function(){
-  $("#test").click(function(){
-    $.post("score",
-    {
-      nickname: "Donald Duck",
-      score: "20"
-    },
-    function(data,status){
-      alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
-    },
-    "json");
-  });
-});  
 
-  /*test()
-  {
-    $.ajax({
-        type: "POST",
-        url: "/game",
-        data: { score: "a" },
-        dataType: 'json',
-        success: function(response){
-            console.log(response);
-        }
-    });
-  }*/
-
-  /*async function post_score() //first_name, last_name, score
-      {
-         var data = { username:"szemet", score"aa" };
-         const response = await fetch("/score", {
-           method: "POST",
-           headers: {
-              'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(data)
-         });
-         const result = await response.json();
-  	 alert(result);
-      }
-  */
+  $(document).ready(function(){
+  	$("#test").click(function(){
+ 	   $.post("score",
+ 	   {
+ 	     nickname: usern,
+ 	     score: score
+ 	   },
+ 	   function(data,status){
+ 	     alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+ 	   },
+ 	   "json");
+ 	 });
+  });  
   
   get_data();
   </script>
