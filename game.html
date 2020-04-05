@@ -152,8 +152,20 @@
 	console.log(data);
 	document.getElementById("greetings").innerText="Welcome " + data + "!";
   }
-  
-  test()
+$(document).ready(function(){
+  $("#test").click(function(){
+    $.post("demo_test_post.asp",
+    {
+      name: "Donald Duck",
+      city: "Duckburg"
+    },
+    function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
+});  
+
+˛ /*test()
   {
     $.ajax({
         type: "POST",
@@ -164,7 +176,7 @@
             console.log(response);
         }
     });
-  }
+  }*/
 
   /*async function post_score() //first_name, last_name, score
       {
@@ -190,7 +202,7 @@
   	<button class="buttons" type="button" onclick="counting_back()">Start</button>
   	<a class="buttons" href="/highscore">Higscore</a>  
   	<a class="backbuttons" href="/logout">Log Out</a>
-  	<button class="backbuttons" id="test" onclick="test()">TEST</button>
+  	<button class="backbuttons" id="test">TEST</button>
   </div>
 </body>
 </html>
