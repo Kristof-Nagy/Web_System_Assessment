@@ -9,12 +9,11 @@
 
 	<script type="text/javascript">
 
-
+	var data;
 	async function get_data() //nickname
 	{
 			const response = await fetch("/all_scores_ordered");
-			const data = await response.json();
-			usern = data;
+			data = await response.json();
 			alert(data);
 	}
 
