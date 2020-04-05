@@ -9,7 +9,7 @@
 
 	<script type="text/javascript">
 
-	var data;
+	/*var data;
 	async function get_data() //nickname
 	{
 			const response = await fetch("/all_scores_ordered");
@@ -17,7 +17,7 @@
 			alert(JSON.stringify(data));
 	}
 
-	get_data();
+	get_data();*/
 	</script>
 
 	<p class="title">Highscore</p>
@@ -63,6 +63,17 @@
 	</div>
 
 		<script type="text/javascript">
+
+	var data;
+	async function get_data() //nickname
+	{
+			const response = await fetch("/all_scores_ordered");
+			data = await response.json();
+			alert(JSON.stringify(data));
+	}
+
+	get_data();
+
 
 		var list_of_rows = document.getElementsByClassName("trow");
 		var j = 0;
