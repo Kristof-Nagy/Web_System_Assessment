@@ -153,7 +153,7 @@
 	document.getElementById("greetings").innerText="Welcome " + data + "!";
   }
   
-  async function get_data() //first_name, last_name, score
+  async function post_score() //first_name, last_name, score
       {
          const data = { username:"szemet", score"15"};
          const response = await fetch("/score", {
@@ -169,6 +169,7 @@
   
   
   get_data();
+  post_score();
   </script>
   <div class="container">
   	<p id="game_over"></p>
