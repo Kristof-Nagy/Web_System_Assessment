@@ -174,12 +174,6 @@ app.route("/game")
  .get(function(req,res) {
 	res.sendFile(__dirname + "/game.html")
  })
- .post(function(req,res){
-	const nickname = "valaki";
-	const score = "1";
-
-	Add_Score(nickname, score, res);
- });
 
 app.route("/highscore")
  .get(function(req,res) {
@@ -200,7 +194,7 @@ app.route("/logout")
  });
 
 app.route("/score")
- .post(function(urlencodedParser,req,res){
+ .post(urlencodedParser,function(req,res){
 	console.log(req.body);
 	//const nickname = req.body.nickname;
 	//const score = req.body.score;
