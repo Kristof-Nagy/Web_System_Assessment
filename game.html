@@ -160,7 +160,7 @@ $(document).ready(function(){
       city: "Duckburg"
     },
     function(data,status){
-      alert("Data: " + data + "\nStatus: " + status);
+      alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
     },
     "json");
   });
