@@ -25,13 +25,13 @@
 
 					<table class="container">
 						<thead>
-<tr class="table100-head">
+							<tr class="table100-head">
 								<th id="h1r1">Position</th>
 								<th id="h1r2">Nickname</th>
 								<th id="h1r3">Highscore</th>
 							</tr>
-						</thead>
-						<tbody>
+							</thead>
+							<tbody>
 								<tr>
 									<td id="c1r1">1</td>
 									<td class="trow"></td>
@@ -75,6 +75,9 @@
 			var list_of_rows = document.getElementsByClassName("trow");
 			var j = 0;
 			for (var i = 0; i < list_of_rows.length; i++) {
+				if(data[j] == null){
+					return;
+				}
 				list_of_rows[i].innerHTML = data[j].nickname;
 				i++
 				list_of_rows[i].innerHTML = data[j].score;
