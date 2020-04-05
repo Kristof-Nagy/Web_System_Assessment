@@ -26,11 +26,11 @@ app.disable('etag');
 // DATABASE
 
 const MongoClient = require('mongodb').MongoClient;
-const logins_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Logins?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
 const game_uri = "mongodb://Tofu:tofu@websystemcluster-shard-00-00-gbe8g.mongodb.net:27017,websystemcluster-shard-00-01-gbe8g.mongodb.net:27017,websystemcluster-shard-00-02-gbe8g.mongodb.net:27017/Game?ssl=true&replicaSet=WebSystemCluster-shard-0&authSource=admin";
 const client = new MongoClient(logins_uri, { useNewUrlParser: true });
-const gane_client = new MongoClient(game_uri, { useNewUrlParser: true });
+const game_client = new MongoClient(game_uri, { useNewUrlParser: true });
 
+mongoose.connect(game_uri, { useNewUrlParser: true });
 
 
 const { Schema } = mongoose;
@@ -52,8 +52,6 @@ const Game = mongoose.model("Score", gameSchema);
 
 function Find_User(usern, res)
 {
-	mongoose.connect(logins_uri, { useNewUrlParser: true });
-
 	User.findOne({username:usern, password:passw}, function(error, user){
 		if (error)
         	{
@@ -78,8 +76,6 @@ function Find_User(usern, res)
 
 function Add_User(usern, passw, res)
 {
-	mongoose.connect(logins_uri, { useNewUrlParser: true });
-
 	const user = new User({ username:usern, password:passw });
 	user.save((error) => {
 		if (error)
@@ -93,8 +89,6 @@ function Add_User(usern, passw, res)
 
 function Login_Authentication(usern, passw, req, res)
 {
-	mongoose.connect(logins_uri, { useNewUrlParser: true });
-
 	User.findOne({username:usern, password:passw}, function(error, user){
 		console.log(user);
 		if (error)
@@ -122,8 +116,6 @@ function Login_Authentication(usern, passw, req, res)
 
 function Add_Score (nickname, score, res)
 {
-	mongoose.connect(game_uri, { useNewUrlParser: true });
-
 	const game_score = new Game({ nickname:nickname, score:score });
 	game_score.save((error) => {
 		if (error)
