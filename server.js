@@ -32,7 +32,6 @@ const client = new MongoClient(logins_uri, { useNewUrlParser: true });
 const gane_client = new MongoClient(game_uri, { useNewUrlParser: true });
 
 
-mongoose.connect(logins_uri, { useNewUrlParser: true });
 
 const { Schema } = mongoose;
 
@@ -43,7 +42,6 @@ const loginSchema = new Schema({
 
 const User = mongoose.model("Users", loginSchema);
 
-mongoose.connect(game_uri, { useNewUrlParser: true });
 
 const gameSchema = new Schema({
 	nickname: String,
@@ -54,6 +52,8 @@ const Game = mongoose.model("Score", gameSchema);
 
 function Find_User(usern, res)
 {
+	mongoose.connect(logins_uri, { useNewUrlParser: true });
+
 	User.findOne({username:usern, password:passw}, function(error, user){
 		if (error)
         	{
@@ -78,6 +78,8 @@ function Find_User(usern, res)
 
 function Add_User(usern, passw, res)
 {
+	mongoose.connect(logins_uri, { useNewUrlParser: true });
+
 	const user = new User({ username:usern, password:passw });
 	user.save((error) => {
 		if (error)
@@ -91,6 +93,8 @@ function Add_User(usern, passw, res)
 
 function Login_Authentication(usern, passw, req, res)
 {
+	mongoose.connect(logins_uri, { useNewUrlParser: true });
+
 	User.findOne({username:usern, password:passw}, function(error, user){
 		console.log(user);
 		if (error)
@@ -118,6 +122,8 @@ function Login_Authentication(usern, passw, req, res)
 
 function Add_Score (nickname, score, res)
 {
+	mongoose.connect(game_uri, { useNewUrlParser: true });
+
 	const game_score = new Game({ nickname:nickname, score:score });
 	game_score.save((error) => {
 		if (error)
