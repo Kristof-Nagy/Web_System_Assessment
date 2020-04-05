@@ -156,8 +156,8 @@ $(document).ready(function(){
   $("#test").click(function(){
     $.post("score",
     {
-      name: "Donald Duck",
-      city: "Duckburg"
+      nickname: "Donald Duck",
+      score: "20"
     },
     function(data,status){
       alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
