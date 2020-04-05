@@ -70,20 +70,19 @@
 			const response = await fetch("/all_scores_ordered");
 			data = await response.json();
 			alert(JSON.stringify(data));
+
+
+			var list_of_rows = document.getElementsByClassName("trow");
+			var j = 0;
+			for (var i = 0; i < list_of_rows.length; i++) {
+				list_of_rows[i].innerHTML = data[j].nickname;
+				i++
+				list_of_rows[i].innerHTML = data[j].score;
+				j++;
+			}
 	}
 
 	get_data();
-
-
-		var list_of_rows = document.getElementsByClassName("trow");
-		var j = 0;
-		for (var i = 0; i < list_of_rows.length; i++) {
-			list_of_rows[i].innerHTML = data[j].nickname;
-			i++
-			list_of_rows[i].innerHTML = data[j].score;
-			j++;
-		}
-		
 		</script>
 </body>
 </html>
