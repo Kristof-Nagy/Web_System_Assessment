@@ -48,30 +48,6 @@ const gameSchema = new Schema({
 
 const Game = mongoose.model("Score", gameSchema);
 
-function Find_User(usern, res)
-{
-	User.findOne({username:usern, password:passw}, function(error, user){
-		if (error)
-        	{
-			return res.status(500).send();
-			//console.log("500");
-        	}
-
-		if (user)
-		{
-			//console.log("200");
-			return res.json(user);
-		}
-
-		if (!user)
-	        {
-			return res.status(404).send("Username or password is wrong!");
-			//console.log("404");
-	        }
-	})
-}
-
-
 function Add_User(usern, passw, res)
 {
 	const user = new User({ username:usern, password:passw });
@@ -92,8 +68,6 @@ function Login_Authentication(usern, passw, req, res)
 		if (error)
         	{
 			return res.status(500).send();
-			console.log("500");
-			//return false;
         	}
 
 		if (user)
@@ -106,8 +80,6 @@ function Login_Authentication(usern, passw, req, res)
 		if (!user)
 	        {
 			return res.status(404).send("Username or password is wrong!");
-			console.log("404");
-			//return false;
 	        }
 	})
 }
@@ -119,10 +91,10 @@ function Add_Score (nickname, score, res)
 		if (error)
 		{
 			console.log(error);
-			return res.status(500);
+			return res.status(500).end();
 		}
 		console.log("Saved 1 instance to database");
-		return res.status(200);
+		return res.status(200).end();
 	});
 
 }
@@ -179,7 +151,6 @@ app.route("/highscore")
 
 app.route("/user")
  .get(function(req,res) {
-	//res.json(Find_User(req.session.user.username))
 	res.json( req.session.user.username )
  });
 
