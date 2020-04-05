@@ -101,7 +101,7 @@ function Add_Score (nickname, score, res)
 
 function Order_By_Score(res)
 {
-	Game.find({},null,{limit:1}).sort("-score").exec(function(err, result){
+	Game.find({},null,{limit:5}).sort("-score").exec(function(err, result){
 		if(err){
 			return res.status(500).end();
 		}
