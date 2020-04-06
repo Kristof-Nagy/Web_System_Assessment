@@ -2,8 +2,7 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>1616003 Clicking Game</title>
+  <title>Clicks & Go - 1616003</title>
   <style>
     canvas {
         border:1px solid #d3d3d3;
@@ -22,6 +21,7 @@
   var canvas_context;
   var usern;
 
+  // Simple alert
   function counting_back()
   {
     document.getElementById("game_over").innerText="";
@@ -32,35 +32,12 @@
     startGame();
   }
 
-  function startGame() {
-      score = 0;
-      myGameArea.start();
-      walls();
-      object = new component(75,75,"red",random_position_x(),random_position_y());
-
-  }
-
-  function clickHandler(event)
+  function startGame()
   {
-    x = event.clientX-myGameArea.canvas.offsetLeft;
-    y = event.clientY-myGameArea.canvas.offsetTop;
-
-    check_target(x,y);
-    myGameArea.update();
-  }
-
-  function check_target()
-  {
-    if(x >= object.x && x <= object.x + 75 && y >= object.y && y <= object.y + 75)
-    {
-      score++;
-      canvas_context.clearRect(object.x, object.y, 75, 75);
-      //console.log(score);
-      object = new component(75,75,"red",random_position_x(),random_position_y());
-    }
-    else{
-      game_over();
-    }
+    score = 0;
+    myGameArea.start();
+    walls();
+    object = new red_square(75,75,"red",random_position_x(),random_position_y());
   }
 
   var myGameArea = {
@@ -80,6 +57,29 @@
         document.getElementById("score").innerText="Score: " + score;
         console.log(score);
       }
+  }
+
+  function clickHandler(event)
+  {
+    x = event.clientX-myGameArea.canvas.offsetLeft;
+    y = event.clientY-myGameArea.canvas.offsetTop;
+
+    check_target(x,y);
+    myGameArea.update();
+  }
+
+  // Check if the player click was the square
+  function check_target()
+  {
+    if(x >= object.x && x <= object.x + 75 && y >= object.y && y <= object.y + 75)
+    {
+      score++;
+      canvas_context.clearRect(object.x, object.y, 75, 75);
+      object = new component(75,75,"red",random_position_x(),random_position_y());
+    }
+    else{
+      game_over();
+    }
   }
 
   function walls()
@@ -112,18 +112,19 @@
     }
   }
 
-  function component(width, height, color, x, y) {
-      this.width = width;
-      this.height = height;
-      this.x = x*75;
-      this.y = y*75;
-      ctx = myGameArea.context;
-      ctx.fillStyle = color;
+  function red_square(width, height, color, x, y)
+  {
+    this.width = width;
+    this.height = height;
+    this.x = x*75;
+    this.y = y*75;
+    ctx = myGameArea.context;
+    ctx.fillStyle = color;
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.clicked = function(){
+      this.fillStyle = blue;
       ctx.fillRect(this.x, this.y, this.width, this.height);
-      this.clicked = function(){
-        this.fillStyle = blue;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-      }
+    }
   }
 
   function random_position_x()
@@ -134,46 +135,44 @@
 
   function random_position_y()
   {
-    this.y = Math.floor(Math.random() * 5) + 1;
+    this.y = Math.floor(Math.random() * 5) + 1
     return this.y
   }
 
   function game_over()
   {
-      canvas_context = null;
-      document.getElementById("game_over").innerText="Game Over, press start to try again\nYour score was: " + score;
-      add_score_to_db();
+    canvas_context = null;
+    document.getElementById("game_over").innerText="Game Over, press start to try again\nYour score was: " + score;
+    add_score_to_db();
   }
 
-  async function get_data() //nickname
+  // Get data to greet the player by his nickname (server side = by session)
+  async function get_data() //nickname0
   {
-	const response = await fetch("/user");
-	const data = await response.json();
-	usern = data;
-	document.getElementById("greetings").innerText="Welcome " + data + "!";
+    const response = await fetch("/user");
+    const data = await response.json();
+    usern = data;
+    document.getElementById("greetings").innerText="Welcome " + data + "!";
   }
 
   function add_score_to_db()
   {
-	$.post("score",
- 	   {
- 	     nickname: usern,
- 	     score: score
- 	   },
- 	   function(data,status){
- 	     alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
- 	   },
- 	   "json");
+    $.post("score",
+    {
+      nickname: usern,
+      score: score
+    }, "json");
   }
 
   get_data();
+
   </script>
   <div class="container">
-  	<p id="game_over"></p>
-	<p id="greetings">Welcome, </p>
+    <p id="game_over"></p>
+    <p id="greetings"></p>
   	<p id="score">Score: 0</p>
   	<button class="buttons" type="button" onclick="counting_back()">Start</button>
-  	<a class="buttons" href="/highscore">Higscore</a>  
+  	<a class="buttons" href="/highscore">Higscore</a>
   	<a class="backbuttons" href="/logout">Log Out</a>
   </div>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>Table V01</title>
+	<title>Clicks & Go Highscore - 1616003</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/index.css">
 </head>
@@ -48,11 +48,11 @@
 					<a class="buttons" href="/game">Back</a>
 	</div>
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 
-	var data;
-	async function get_data() //nickname
-	{
+		var data;
+		async function get_data() //nickname
+		{
 			const response = await fetch("/all_scores_ordered");
 			data = await response.json();
 
@@ -67,9 +67,10 @@
 				list_of_rows[i].innerHTML = data[j].score;
 				j++;
 			}
-	}
-
-	get_data();
-		</script>
+		}
+		get_data();
+		
+	</script>
 </body>
 </html>
+
