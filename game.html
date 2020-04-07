@@ -75,7 +75,7 @@
     {
       score++;
       canvas_context.clearRect(object.x, object.y, 75, 75);
-      object = new component(75,75,"red",random_position_x(),random_position_y());
+      object = new red_square(75,75,"red",random_position_x(),random_position_y());
     }
     else{
       game_over();
@@ -100,7 +100,7 @@
     {
       if (this.maze[ this.bx + (this.by*this.rows) ] == 1)
       {
-        new component(75, 75, "black", this.bx, this.by);
+        new red_square(75, 75, "black", this.bx, this.by);
       }
 
       this.bx = this.bx + 1
