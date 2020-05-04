@@ -123,14 +123,14 @@ function Order_By_Score(res) {
 //
 
 
-function validator(validating)
+function validator(check_var)
 {
 	invalid_chars = ["\\","\/","\*","\#"]
 	for (j = 0; j < invalid_chars.length; j++)
 	{
-		for (i = 0; i < validating.length; i++)
+		for (i = 0; i < check_var.length; i++)
 		{
-			if (validating.charat[i].match(invalid_chars[j]))
+			if (check_var.charat[i].match(invalid_chars[j]))
 			{
 				return res.status(300).send("invalid char, go back")
 			}
