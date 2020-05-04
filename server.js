@@ -50,10 +50,8 @@ const Game = mongoose.model("Score", gameSchema);
 
 
 // Functions:
+
 // - Add user
-// - Add score
-// - Login authentication
-// - Order by score
 function Add_User(usern, passw, res)
 {
 	const user = new User({ username:usern, password:passw });
@@ -67,6 +65,7 @@ function Add_User(usern, passw, res)
 	});
 }
 
+// Add Score
 function Add_Score (nickname, score, res)
 {
 	const game_score = new Game({ nickname:nickname, score:score });
@@ -81,6 +80,7 @@ function Add_Score (nickname, score, res)
 	});
 }
 
+// Login Authentication
 function Login_Authentication(usern, passw, req, res)
 {
 	User.findOne({username:usern, password:passw}, function(error, user){
@@ -104,8 +104,8 @@ function Login_Authentication(usern, passw, req, res)
 	})
 }
 
-function Order_By_Score(res)
-{
+// Getting the scores from the database in an ordered list
+function Order_By_Score(res) {
 	Game.find({},null,{limit:5}).sort("-score").exec(function(err, result){
 		if(err){
 			return res.status(500).end();
@@ -118,10 +118,17 @@ function Order_By_Score(res)
 //***********************************************************************************************************************************************
 // END OF DATABASE-------------------------------------------------------------------------------------------------------------------------------
 
+//
+// Pages
+//
+
+// Home Page
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
 });
 
+
+// Login Page
 app.route('/login')
 .get(function(req, res) {
 	res.sendFile(__dirname + "/login.html");
@@ -133,6 +140,8 @@ app.route('/login')
 	 Login_Authentication(nickname, password, req, res);
  });
 
+
+// Register Page
 app.route("/register")
 .get(function(req, res) {
 	res.sendFile(__dirname + "/register.html");
@@ -146,31 +155,43 @@ app.route("/register")
 	 Add_User(nickname, password, res);
  });
 
+
+// About Us Page
 app.route("/about_us")
 .get(function(req, res) {
 	res.sendFile(__dirname + "/about_us.html")
 });
 
+
+// Game Page
 app.route("/game")
 .get(function(req,res) {
 	res.sendFile(__dirname + "/game.html")
 })
 
+
+// Highscore Page
 app.route("/highscore")
 .get(function(req,res) {
 	res.sendFile(__dirname + "/highscore.html");
 });
 
+
+// Getting all score from database in an ordered list
 app.route("/all_scores_ordered")
 .get(function(req,res){
 	Order_By_Score(res);
 });
 
+
+// Get user session
 app.route("/user")
 .get(function(req,res) {
 	res.json( req.session.user.username )
 });
 
+
+// Logging out: destroying session
 app.route("/logout")
 .get(function(req, res){
 	req.session.user = null;
@@ -178,6 +199,8 @@ app.route("/logout")
 	res.redirect('/');
 });
 
+
+// Getting nickname and score, than add it to the database
 app.route("/score")
 .post(urlencodedParser,function(req,res){
 	const nickname = req.body.nickname;
@@ -185,6 +208,8 @@ app.route("/score")
 
 	Add_Score(nickname, score, res);
 });
+
+
 
 // start the server
 app.listen(PORT, function(){
