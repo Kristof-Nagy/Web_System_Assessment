@@ -51,7 +51,7 @@ const Game = mongoose.model("Score", gameSchema);
 
 // Functions:
 
-// - Add user
+// Add user
 function Add_User(usern, passw, res)
 {
 	const user = new User({ username:usern, password:passw });
@@ -122,6 +122,22 @@ function Order_By_Score(res) {
 // Pages
 //
 
+var invalid_chars = ['\',"/","*","#"]
+
+function validator(validating)
+{
+	for (j = 0; i < invalid_chars.lenth; i++)
+	{
+		for (i = 0; i < validating.length; i++)
+		{
+			if (validator.charat[i].match(invalid_chars[j]))
+			{
+				return res.status(300).send("invalid char, go back")
+			}
+		}
+	}
+}
+
 // Home Page
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
@@ -147,12 +163,13 @@ app.route("/register")
 	res.sendFile(__dirname + "/register.html");
 })
  .post(urlencodedParser, function(req, res) {
-   const firstname = req.body.firstname;
-   const lastname = req.body.lastname;
+
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-	 Add_User(nickname, password, res);
+   validator(nickname);
+
+   Add_User(nickname, password, res);
  });
 
 
