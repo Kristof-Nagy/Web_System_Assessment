@@ -125,6 +125,9 @@ function Order_By_Score(res) {
 
 function validator(check_var)
 {
+	var j;
+	var i;
+
 	invalid_chars = ["\\","\/","\*","\#"]
 	for (j = 0; j < invalid_chars.length; j++)
 	{
