@@ -130,7 +130,7 @@ function validator(validating)
 	{
 		for (i = 0; i < validating.length; i++)
 		{
-			if (validator.charat[i].match(invalid_chars[j]))
+			if (validating.charat[i].match(invalid_chars[j]))
 			{
 				return res.status(300).send("invalid char, go back")
 			}
