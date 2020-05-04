@@ -122,7 +122,7 @@ function Order_By_Score(res) {
 // Pages
 //
 
-var invalid_chars = ['\',"/","*","#"]
+/*var invalid_chars = ['\',"/","*","#"]
 
 function validator(validating)
 {
@@ -137,7 +137,7 @@ function validator(validating)
 		}
 	}
 }
-
+*/
 // Home Page
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
@@ -167,7 +167,7 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-   validator(nickname);
+   //validator(nickname);
 
    Add_User(nickname, password, res);
  });
