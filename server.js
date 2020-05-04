@@ -122,11 +122,11 @@ function Order_By_Score(res) {
 // Pages
 //
 
-/*var invalid_chars = ['\',"/","*","#"]
 
 function validator(validating)
 {
-	for (j = 0; i < invalid_chars.lenth; i++)
+	invalid_chars = ["\",'/','*','#']
+	for (j = 0; i < invalid_chars.length; i++)
 	{
 		for (i = 0; i < validating.length; i++)
 		{
@@ -137,7 +137,7 @@ function validator(validating)
 		}
 	}
 }
-*/
+
 // Home Page
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
