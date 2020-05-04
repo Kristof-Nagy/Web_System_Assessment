@@ -167,7 +167,7 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-   //validator(nickname);
+   validator(nickname);
 
    Add_User(nickname, password, res);
  });
