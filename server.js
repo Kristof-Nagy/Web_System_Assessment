@@ -178,7 +178,8 @@ app.route("/register")
    }
    else
    {
-	return res.status(300).send("NO NiCKNAME OR PASS").end();
+	res.setHeader('Content-Type', 'application/json');
+	return res.status(300).end(JSON.stringify("valami hiba"));
    }
    Add_User(nickname, password, res);
  });
