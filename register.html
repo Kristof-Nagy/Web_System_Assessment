@@ -16,7 +16,7 @@ $("#my_form").submit(function(event){
 	var form_data = {nick_name: "a", pswd: "b"}; //Encode form elements for submission
 	
 	$.ajax({
-		url : /server,
+		url : /register,
 		type: POST,
 		data : form_data
 	}).done(function(response){ //
@@ -29,7 +29,7 @@ $("#my_form").submit(function(event){
 			<p>Register</p>
 		</div>
 		<div class="container">
-			<form method="POST" action="/server">
+			<form method="POST" action="/register">
 
 				<label for="nick_name">Nick Name</label>
 				<input type="text" id="nick_name" name="nickname" placeholder="Choose a nick name...">
