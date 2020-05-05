@@ -17,14 +17,17 @@
 			pswd = document.getElementById("pswd").value || "";
  			
 			var form_data = {nickname: nckname, pswd: pswd}; //Encode form elements for submission
-
+			var resp;
 			$.ajax({
 				url : "/register",
 				type: "POST",
 				data : form_data,
 				statusCode: {
 					300: function(response){
-					  alert(response);
+					  for(var i=0; i<len; i++){
+					    resp += response[i]
+					  }
+					  alert(resp);
 					}
 				}
 			});
