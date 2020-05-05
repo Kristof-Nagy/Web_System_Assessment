@@ -133,7 +133,7 @@ function validator(check_var)
 	{
 		for (i = 0; i < check_var.length; i++)
 		{
-			if (check_var.charat[i].match(invalid_chars[j]))
+			if (check_var.charAt[i].match(invalid_chars[j]))
 			{
 				return res.status(300).send("invalid char, go back")
 			}
