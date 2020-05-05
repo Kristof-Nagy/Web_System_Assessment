@@ -169,7 +169,7 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-   if (!validator.isAlpha(nickname, ["hu-HU"])
+   if (!validator.isAlpha(nickname, ["hu-HU"]))
    {
 	return res.status(300).send("Invalid characters, please try again");
    }
