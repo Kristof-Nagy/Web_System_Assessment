@@ -116,11 +116,13 @@ function Check_Duplicates(usern, req, res)
 
 		if (result)
 		{
-			return true;
+			return res.status(500).send("result " + result);
+			//return true;
 		}
 		else
 		{
-			return false;
+			return res.status(500).send("else" + result);
+			//return false;
 		}
 	})
 }
