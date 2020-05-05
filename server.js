@@ -166,8 +166,11 @@ app.route("/register")
 })
  .post(urlencodedParser, function(req, res) {
 
-   const nickname = req.body.nickname;
-   const password = req.body.pswd;
+   //const nickname = req.body.nickname;
+   //const password = req.body.pswd;
+
+   const nickname = req.body[0];
+   const nickname = req.body[1];
 
    var valid_input = validator.isAlpha(nickname, ["hu-HU"]);
 
