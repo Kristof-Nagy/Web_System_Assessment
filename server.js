@@ -160,6 +160,7 @@ app.route('/login')
 
 
 // Register Page
+// Validation check: check if the nickname contains only hungarian letters - that includes all the english letters, plus extra hungarian for my convinience at testing -
 app.route("/register")
 .get(function(req, res) {
 	res.sendFile(__dirname + "/register.html");
@@ -171,7 +172,7 @@ app.route("/register")
 
    if (!validator.isAlpha(nickname, ["hu-HU"]))
    {
-	return res.status(300).send("Invalid characters, please try again");
+	return res.status(300).send("Invalid character(s), please try again");
    }
 
    // checking if nickname or password is empty
@@ -183,6 +184,7 @@ app.route("/register")
    {
 	return res.status(300).send("Nickname or password is empty, please fill them up");
    }
+
    Add_User(nickname, password, res);
  });
 
