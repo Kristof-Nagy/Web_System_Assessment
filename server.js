@@ -170,13 +170,13 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-   if (validator.escape(nickname) == true)
+   if (validator.escape(nickname) != true)
 	{
-		return res.status(400).send("wrong username!!!!!!!!")
+		return res.status(400).send("NOT CORRECT!!!!" + nickname);
 	}
    else
 	{
-		return res.status(300).send("correct!!!!!!!!!");
+		return res.status(300).send("correct!!!!!!!!!" + nicknamec);
 	}
 
 
