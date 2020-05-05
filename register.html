@@ -9,20 +9,27 @@
 
 	<body>
 	<script>
-		$.ajax({
-		 url: '/register',
-		 type: "POST",
-		 data: '',
-		 success: function(response){
- 		 alert('evaluate response and show alert');
- 		}
-		}); 
+
+
+$("#my_form").submit(function(event){
+	event.preventDefault(); //prevent default action 
+	var form_data = {nick_name: "a", pswd: "b"}; //Encode form elements for submission
+	
+	$.ajax({
+		url : /server,
+		type: POST,
+		data : form_data
+	}).done(function(response){ //
+		alert(response);
+	});
+});
+
 	</script>
 		<div class="title">
 			<p>Register</p>
 		</div>
 		<div class="container">
-			<form method="POST" action="/register">
+			<form method="POST" action="/server.js">
 
 				<label for="nick_name">Nick Name</label>
 				<input type="text" id="nick_name" name="nickname" placeholder="Choose a nick name...">
