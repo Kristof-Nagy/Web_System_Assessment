@@ -18,9 +18,10 @@ $("#my_form").submit(function(event){
 	$.ajax({
 		url : "/register",
 		type: POST,
-		data : form_data
-	}).done(function(response){ //
-		alert(response);
+		data : form_data,
+		success: function(response){
+		  alert(responsey);
+		 }
 	});
 });
 
