@@ -116,11 +116,11 @@ function Check_Duplicates(usern, req, res)
 
 		if (result)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	})
 }
@@ -178,7 +178,7 @@ app.route("/register")
    // checking if nickname or password is empty
    if (validator.isEmpty(nickname) == false && validator.isEmpty(password) == false)
    {
-	if(Check_Duplicates(nickname))
+	if(Check_Duplicates(nickname, req, res))
 	{
 		return res.status(400).send("DUPLICATE" );
 	}
