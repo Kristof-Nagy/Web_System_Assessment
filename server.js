@@ -170,15 +170,17 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-   if (!validator.isAlpha(nickname, ["hu-HU"]))
-   {
-	return res.status(300).send("Invalid character(s), please try again");
-   }
-
    // checking if nickname or password is empty
    if (validator.isEmpty(nickname) == false && validator.isEmpty(password) == false)
    {
-	Check_Duplicates(nickname,req,res);
+	if (!validator.isAlpha(nickname, ["hu-HU"]))
+	{
+		return res.status(300).send("Invalid character(s), please try again");
+	}
+	else
+	{
+		Check_Duplicates(nickname,req,res);
+	}
    }
    else
    {
