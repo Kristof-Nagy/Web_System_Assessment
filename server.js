@@ -118,11 +118,6 @@ function Check_Duplicates(usern, req, res)
 		{
 			return res.status(300).send("DUPLICATE");
 		}
-		else
-		{
-			Add_User(nickname, password, res);
-			return res.status(200).send("OK, NO DUPLICATE");
-		}
 	})
 }
 
@@ -185,6 +180,7 @@ app.route("/register")
    {
 	return res.status(300).send("NO NiCKNAME OR PASS");
    }
+   Add_User(nickname, password, res);
  });
 
 
