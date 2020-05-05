@@ -22,8 +22,10 @@
 				url : "/register",
 				type: "POST",
 				data : form_data,
-				.then(function(response){
-					alert(response.answer)
+				statusCode: {
+					300: function(response) {
+					      alert(response);
+					}
 				}
 			});
 		});
