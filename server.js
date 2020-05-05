@@ -116,11 +116,12 @@ function Check_Duplicates(usern, req, res)
 
 		if (result)
 		{
-			return true;
+			return res.status(300).send("DUPLICATE");
 		}
 		else
 		{
-			return false;
+			Add_User(nickname, password, res);
+			return res.status(200).send("OK, NO DUPLICATE");
 		}
 	})
 }
@@ -178,22 +179,12 @@ app.route("/register")
    // checking if nickname or password is empty
    if (validator.isEmpty(nickname) == false && validator.isEmpty(password) == false)
    {
-	//Check_Duplicates(nickname,req,res);
-	if(Check_Duplicates(nickname, req, res))
-	{
-		return res.status(400).send("DUPLICATE" );
-	}
-	else
-	{
-		return res.status(400).send("NO DUPLICATE");
-	}
-  }
+	Check_Duplicates(nickname,req,res);
+   }
    else
    {
 	return res.status(300).send("NO NiCKNAME OR PASS");
    }
-
-   //Add_User(nickname, password, res);
  });
 
 
