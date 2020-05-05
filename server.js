@@ -169,7 +169,10 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-   var valid_input = validator.isAlpha(nickname, ["hu-HU"]);
+   if (!validator.isAlpha(nickname, ["hu-HU"])
+   {
+	return res.status(300).send("Invalid characters, please try again");
+   }
 
    // checking if nickname or password is empty
    if (validator.isEmpty(nickname) == false && validator.isEmpty(password) == false)
