@@ -113,7 +113,6 @@ function Order_By_Score(res) {
 		}
 		console.log(result);
 		return res.status(200).json(result);
-		//return res.status(200).json( result )
 	});
 }
 //***********************************************************************************************************************************************
@@ -175,8 +174,13 @@ app.route("/register")
 	{
 		return res.status(400).send("wrong username!!!!!!!!")
 	}
+   else
+	{
+		return res.status(300).send("correct!!!!!!!!!");
+	}
 
-   Add_User(nickname, password, res);
+
+   //Add_User(nickname, password, res);
  });
 
 
