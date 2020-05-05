@@ -171,7 +171,10 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-   validator.escape(nickname);
+   if (validator.escape(nickname) == true)
+	{
+		return res.status(400).send("wrong username!!!!!!!!")
+	}
 
    Add_User(nickname, password, res);
  });
