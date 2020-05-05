@@ -171,7 +171,7 @@ app.route("/register")
    const password = req.body.pswd;
 
    var valid_input = validator.escape(nickname);
-   return res.status(400).send("name: " + valid_input);
+   return res.status(400).send("name: " + valid_input + validator.isEmpty(password));
 
 /*
    if (validator.escape(nickname) != true)
