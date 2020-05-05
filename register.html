@@ -21,10 +21,10 @@
 			$.ajax({
 				url : "/register",
 				type: "POST",
-				data : JSON.parse(form_data),
+				data : form_data,
 				statusCode: {
 					300: function(response) {
-					      alert(response);
+					      alert(JSON.stringify(response));
 					}
 				}
 			});
