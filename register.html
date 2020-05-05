@@ -4,14 +4,25 @@
 	<head>
 		<title>Register - 1616003</title>
 		<link rel="stylesheet" href="/css/index.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	</head>
 
 	<body>
+	<script>
+		$.ajax({
+		 url: '/register',
+		 type: "POST",
+		 data: '',
+		 success: function(response){
+ 		 alert('evaluate response and show alert');
+ 		}
+		}); 
+	</script>
 		<div class="title">
 			<p>Register</p>
 		</div>
 		<div class="container">
-			<form method="POST" action="/register" onsubmit="alert('Registered Successfully')">
+			<form method="POST" action="/register">
 
 				<label for="nick_name">Nick Name</label>
 				<input type="text" id="nick_name" name="nickname" placeholder="Choose a nick name...">
