@@ -175,7 +175,7 @@ app.route("/register")
 
    if (validator.isEmpty(nickname) == false && validator.isEmpty(password) == false)
    {
-	return res.status(400).send("contains special chars? " + validator.contains(nickname, ) );
+	return res.status(400).send("only normal chars? " + valid_input );
    }
    else
    {
