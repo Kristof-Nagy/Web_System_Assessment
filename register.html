@@ -22,9 +22,11 @@
 				url : "/register",
 				type: "POST",
 				data : form_data,
-				300: function(response){
-				  alert(response);
-				 }
+				statusCode: {
+					300: function(response){
+					  alert(response);
+					}
+				}
 			});
 		});
 	});
