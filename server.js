@@ -178,7 +178,7 @@ app.route("/register")
    }
    else
    {
-	return res.status(300).send("NO NiCKNAME OR PASS");
+	return res.status(300).send("NO NiCKNAME OR PASS").end();
    }
    Add_User(nickname, password, res);
  });
