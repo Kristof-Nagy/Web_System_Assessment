@@ -21,7 +21,11 @@
                         $.ajax({
                                 url : "/login",
                                 type: "POST",
-                                data : form_data,
+				data : form_data,
+				success: function(data)
+				{
+					window.location.replace('/game');
+				}
                                 error: function (data, status, err) {
                                     alert(data.responseText);
                                   },
