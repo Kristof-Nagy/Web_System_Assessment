@@ -22,11 +22,6 @@
 				url : "/register",
 				type: "POST",
 				data : form_data,
-				statusCode: {
-					300: function(response) {
-					      alert("300");
-					}
-				},
 				error: function (data, status, err) {
 				    alert(data.responseText);
 				  },

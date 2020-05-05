@@ -116,7 +116,7 @@ function Check_Duplicates(usern, req, res)
 
 		if (result)
 		{
-			return res.status(300).send("DUPLICATE");
+			return res.status(300).send("This nickname is already taken, try another");
 		}
 	})
 }
@@ -178,7 +178,7 @@ app.route("/register")
    }
    else
    {
-	return res.status(300).send("valami hiba");
+	return res.status(300).send("Nickname or password is empty, please fill them up");
    }
    Add_User(nickname, password, res);
  });
