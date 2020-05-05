@@ -105,6 +105,23 @@ function Login_Authentication(usern, passw, req, res)
 	})
 }
 
+// Check for duplicate in database
+function Check_Duplicates(usern, req, res)
+{
+	User.findOne({username:usern}, function(error, result){
+		if (error)
+		{
+			return res.status(500).send();
+		}
+
+		if (result)
+		{
+			return res.send("THERE IS A NAME ALREADY");
+		}
+	})
+}
+
+
 // Getting the scores from the database in an ordered list
 function Order_By_Score(res) {
 	Game.find({},null,{limit:5}).sort("-score").exec(function(err, result){
@@ -123,24 +140,6 @@ function Order_By_Score(res) {
 //
 
 
-/*function validator(check_var)
-{
-	var j;
-	var i;
-
-	invalid_chars = ["\\","\/","\*","\#"]
-	for (j = 0; j < invalid_chars.length; j++)
-	{
-		for (i = 0; i < check_var.length; i++)
-		{
-			if (check_var.charAt[i].match(invalid_chars[j]))
-			{
-				return res.status(300).send("invalid char, go back")
-			}
-		}
-	}
-}
-*/
 // Home Page
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
@@ -172,26 +171,16 @@ app.route("/register")
 
    var valid_input = validator.isAlpha(nickname, ["hu-HU"]);
 
-
+   // checking if nickname or password is empty
    if (validator.isEmpty(nickname) == false && validator.isEmpty(password) == false)
    {
+	Check_Duplicates(nickname);
 	return res.status(400).send("only normal chars? " + valid_input );
    }
    else
    {
-	return res.status(300).send("NO NCKNAME OR PASS");
+	return res.status(300).send("NO NiCKNAME OR PASS");
    }
-
-/*
-   if (validator.escape(nickname) != true)
-	{
-		return res.status(400).send("NOT CORRECT!!!! name: " + nickname);
-	}
-   else
-	{
-		return res.status(300).send("correct!!!!!!!!! name: " + nickname);
-	}
-*/
 
    //Add_User(nickname, password, res);
  });
