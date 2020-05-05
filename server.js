@@ -179,7 +179,7 @@ app.route("/register")
    else
    {
 	res.setHeader('Content-Type', 'application/json');
-	return res.status(300).send(JSON.stringify(answer: "valami hiba"));
+	return res.status(300).send(JSON.stringify({answer: "valami hiba"}));
    }
    Add_User(nickname, password, res);
  });
