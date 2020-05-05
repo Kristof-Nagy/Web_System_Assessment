@@ -170,12 +170,12 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-   var valid_input = validator.escape(nickname);
+   var valid_input = validator.isAlpha(nickname, [hu-HU]);
 
 
    if (validator.isEmpty(nickname) == false && validator.isEmpty(password) == false)
    {
-	return res.status(400).send("name: " + valid_input + validator.trim(nickname));
+	return res.status(400).send("contains special chars? " + validator.contains(nickname, ) );
    }
    else
    {
