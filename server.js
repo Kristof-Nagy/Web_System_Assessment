@@ -6,6 +6,7 @@ var mongoose = require("mongoose");
 var bodyParser = require('body-parser');
 var MongoDBStore = require("connect-mongodb-session")(session);
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var validator = require('validator');
 
 const PORT = process.env.PORT || 8080;
 var port = PORT;
@@ -123,7 +124,7 @@ function Order_By_Score(res) {
 //
 
 
-function validator(check_var)
+/*function validator(check_var)
 {
 	var j;
 	var i;
@@ -140,7 +141,7 @@ function validator(check_var)
 		}
 	}
 }
-
+*/
 // Home Page
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
@@ -170,7 +171,7 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-   validator(nickname);
+   validator.escape(nickname);
 
    Add_User(nickname, password, res);
  });
