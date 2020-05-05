@@ -108,7 +108,7 @@ function Login_Authentication(usern, passw, req, res)
 // Check for duplicate in database
 function Check_Duplicates(usern, req, res)
 {
-	User.findOne({username:usern}, function(error, result){
+	User.find({username:usern}, function(error, result){
 		if (error)
 		{
 			return res.status(500).send();
