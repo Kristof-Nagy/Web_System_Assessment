@@ -100,7 +100,7 @@ function Login_Authentication(usern, passw, req, res)
 
 		if (!user)
 	        {
-			return res.status(404).send("Username or password is wrong!");
+			return res.status(404).send("Username or password is wrong! Please try again.");
 	        }
 	})
 }
