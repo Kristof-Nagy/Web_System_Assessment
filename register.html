@@ -21,7 +21,7 @@
 			$.ajax({
 				url : "/register",
 				type: "POST",
-				data : form_data,
+				data : JSON.parse(form_data),
 				statusCode: {
 					300: function(response) {
 					      alert(response);
