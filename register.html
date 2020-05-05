@@ -13,7 +13,7 @@
 	$(document).ready(function() { 
 		$("#my_form").submit(function(event){
 			event.preventDefault(); //prevent default action 
-			var form_data = {nickname: "a", pswd: "b"}; //Encode form elements for submission
+			var form_data = {nickname: document.getElementById("nicnkname").value, pswd: document.getElementById("pswd")}; //Encode form elements for submission
 
 			$.ajax({
 				url : "/register",
