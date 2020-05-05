@@ -22,7 +22,9 @@
 				url : "/register",
 				type: "POST",
 				data : form_data,
-				.then(response => alert(response[0]))
+				.then(function(response){
+					alert(response[0])
+				}
 			});
 		});
 	});
