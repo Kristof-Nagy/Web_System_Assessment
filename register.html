@@ -21,7 +21,7 @@
 			$.ajax({
 				url : "/register",
 				type: "POST",
-				data : form_data,
+				data : JSON.stringify(form_data),
 				dataType: 'json',
         			contentType: 'application/json',
 				statusCode: {
