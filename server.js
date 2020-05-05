@@ -169,7 +169,7 @@ app.route("/register")
    //const nickname = req.body.nickname;
    //const password = req.body.pswd;
 
-   res = JSON.stringify(res);
+   req = JSON.stringify(req);
 
    const nickname = req.body[0];
    const password = req.body[1];
