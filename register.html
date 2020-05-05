@@ -13,8 +13,8 @@
 	$(document).ready(function() { 
 		$("#my_form").submit(function(event){
 			event.preventDefault(); //prevent default action
-			nckname = document.getElementById("nickname").value || "";
-			pswd = document.getElementById("pswd").value || "";
+			nckname = document.getElementById("nickname").value || " ";
+			pswd = document.getElementById("pswd").value || " ";
  			
 			var form_data = {nickname: nckname, pswd: pswd}; //Encode form elements for submission
 
