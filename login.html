@@ -4,9 +4,33 @@
 	<head>
 		<title>Login - 1616003</title>
 		<link rel="stylesheet" href="/css/index.css">
-	</head>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        </head>
 
-	<body>
+        <body>
+        <script>
+
+        $(document).ready(function() {
+                $("#my_form").submit(function(event){
+                        event.preventDefault(); //prevent default action
+                        nckname = document.getElementById("nick_name").value || "";
+                        pswd = document.getElementById("pswd").value || "";
+
+                        var form_data = {nickname: nckname, pswd: pswd}; //Encode form elements for submission
+                        var resp;
+                        $.ajax({
+                                url : "/register",
+                                type: "POST",
+                                data : form_data,
+                                error: function (data, status, err) {
+                                    alert(data.responseText);
+                                  },
+
+                        });
+                });
+        });
+
+        </script>
 		<div class="title">
 			<p>Login</p>
 		</div>

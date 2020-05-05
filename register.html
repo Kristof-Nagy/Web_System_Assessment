@@ -22,9 +22,12 @@
 				url : "/register",
 				type: "POST",
 				data : form_data,
+				success: function(data){
+					alert("Registration Successful!")
+				},
 				error: function (data, status, err) {
 				    alert(data.responseText);
-				  },
+				},
 
 			});
 		});
