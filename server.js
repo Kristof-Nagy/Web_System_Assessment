@@ -108,7 +108,7 @@ function Login_Authentication(usern, passw, req, res)
 // Check for duplicate in database
 function Check_Duplicates(usern, req, res)
 {
-	User.find({}, function(error, result){
+	User.findOne({username:usern}, function(error, result){
 		if (error)
 		{
 			return res.status(500).send();
@@ -181,14 +181,14 @@ app.route("/register")
    if (validator.isEmpty(nickname) == false && validator.isEmpty(password) == false)
    {
 	Check_Duplicates(nickname,req,res);
-	if(Check_Duplicates(nickname, req, res))
-	{
-		return res.status(400).send("DUPLICATE" );
-	}
-	else
-	{
-		return res.status(400).send("NO DUPLICATE");
-	}
+	//if(Check_Duplicates(nickname, req, res))
+	//{
+	//	return res.status(400).send("DUPLICATE" );
+	//}
+	//else
+	//{
+	//	return res.status(400).send("NO DUPLICATE");
+	//}
   }
    else
    {
