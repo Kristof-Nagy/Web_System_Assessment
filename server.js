@@ -170,15 +170,19 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
+   var valid_input = validator.escape(nickname);
+   return res.status(400).send("name: " + valid_input);
+
+/*
    if (validator.escape(nickname) != true)
 	{
-		return res.status(400).send("NOT CORRECT!!!!" + nickname);
+		return res.status(400).send("NOT CORRECT!!!! name: " + nickname);
 	}
    else
 	{
-		return res.status(300).send("correct!!!!!!!!!" + nicknamec);
+		return res.status(300).send("correct!!!!!!!!! name: " + nickname);
 	}
-
+*/
 
    //Add_User(nickname, password, res);
  });
