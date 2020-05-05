@@ -10,18 +10,19 @@
 	<body>
 	<script>
 
+	$(document).ready(function() { 
+		$("#my_form").submit(function(event){
+			event.preventDefault(); //prevent default action 
+			var form_data = {nick_name: "a", pswd: "b"}; //Encode form elements for submission
 
-	$("#my_form").submit(function(event){
-		event.preventDefault(); //prevent default action 
-		var form_data = {nick_name: "a", pswd: "b"}; //Encode form elements for submission
-
-		$.ajax({
-			url : "/regasfdfister",
-			type: POST,
-			data : form_data,
-			success: function(response){
-			  alert(responsey);
-			 }
+			$.ajax({
+				url : "/regasfdfister",
+				type: POST,
+				data : form_data,
+				success: function(response){
+				  alert(responsey);
+				 }
+			});
 		});
 	});
 
@@ -38,7 +39,7 @@
 				<label for="nick_name">Password</label>
 				<input type="password" id="pswd" name="pswd" placeholder="Enter your password...">
 
-				<input type="button" value="Register">
+				<input type="submit" value="Register">
 
 			</form>
 			<br>
