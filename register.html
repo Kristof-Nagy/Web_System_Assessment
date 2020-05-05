@@ -24,7 +24,7 @@
 				data : form_data,
 				statusCode: {
 					300: function(response){
-					  for(var i=0; i<len; i++){
+					  for(var i=0; i<response.length; i++){
 					    resp += response[i]
 					  }
 					  alert(resp);
