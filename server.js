@@ -170,7 +170,7 @@ app.route("/register")
    const nickname = req.body.nickname;
    const password = req.body.pswd;
 
-   var valid_input = validator.isAlpha(nickname, [hu-HU]);
+   var valid_input = validator.isAlpha(nickname, ["hu-HU"]);
 
 
    if (validator.isEmpty(nickname) == false && validator.isEmpty(password) == false)
